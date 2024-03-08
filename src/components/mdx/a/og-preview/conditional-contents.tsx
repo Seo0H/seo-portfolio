@@ -29,7 +29,7 @@ export const ogCardState: Record<
     return (
       <>
         <img
-          className='not-prose  max-h-[4rem] min-h-[4rem] min-w-[20rem]  object-cover'
+          className='not-prose max-h-[4rem] min-h-[4rem] min-w-[20rem]  object-cover'
           src={Array.isArray(ogImage) ? ogImage[0].url : ogImage}
         />
         <div className='px-2 py-1 *:m-0 *:line-clamp-1'>

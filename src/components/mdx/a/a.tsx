@@ -8,9 +8,9 @@ export const A = (props: ComponentProps<'a'>) => {
   const handleHover = handleShowPreview('mouseenter');
 
   return (
-    <div className='relative inline-block'>
+    <>
       <OGPreviewCard {...{ isHover, openGraph }} />
       <a target='_blank' onMouseEnter={handleHover} onMouseLeave={handleHover} {...props} />
-    </div>
+    </>
   );
 };
