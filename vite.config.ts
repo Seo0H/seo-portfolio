@@ -11,4 +11,7 @@ export default defineConfig({
       { find: 'contents', replacement: '/src/contents' },
     ],
   },
+  server: {
+    port: 3000,
+  },
 });
