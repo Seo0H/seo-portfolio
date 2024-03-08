@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { A } from '@/components/mdx/a';
+import { A } from '@/components/mdx/a/a';
 import { cn } from '@/utils/cn';
 
 import type { MDXComponents } from 'mdx/types';
