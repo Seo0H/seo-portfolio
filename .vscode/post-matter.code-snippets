@@ -1,0 +1,46 @@
+{
+	"Post Matter": {
+		"prefix": ["---"],
+		"description": "Output a file header with the file name and date",
+		"body": [
+		  "---",
+		  "title: '$1'",
+		  "description: '$2'",
+		  "draft: false",
+		  "image: $3",
+		  "tag: $4",
+		  "---",
+		  "",
+		  "$0"
+		],
+		"scope": "md,mdx"
+	  },
+	  "Plain Code block" : {
+		"scope": "md,mdx",
+		"prefix" : ["```"],
+		"description":"Output a Coad block syntax with captions",
+		"body": [
+		  "```",
+		  "$0",
+		  "```"
+		],
+
+	  },
+	  "Code block Caption" : {
+		"scope": "md,mdx",
+		"prefix" : ["``` caption"],
+		"description":"Output a Coad block syntax with captions",
+		"body": [
+		  "``` caption=\"$0\"",
+		  "```"
+		],
+	  },
+	  "Add Caption" : {
+		"scope": "md,mdx",
+		"prefix" : ["caption"],
+		"description":"Output a captions syntax",
+		"body": [
+		  "caption=\"$0\"",
+		],
+	  },
+}

@@ -1,8 +1,8 @@
-import { Outlet, createBrowserRouter } from 'react-router-dom';
+import { Outlet, createBrowserRouter, redirect } from 'react-router-dom';
 
 import { GlobalLayout } from '@/components/layout/global';
-
-import MainPage from '../pages/main/index';
+import InfoPage from '@/pages/info';
+import ProjectPage from '@/pages/project';
 
 export const router = createBrowserRouter([
   {
@@ -11,6 +11,10 @@ export const router = createBrowserRouter([
         <Outlet />
       </GlobalLayout>
     ),
-    children: [{ path: '/', element: <MainPage /> }],
+    children: [
+      { path: '/', loader: () => redirect('/info') },
+      { path: '/info', element: <InfoPage /> },
+      { path: '/project', element: <ProjectPage /> },
+    ],
   },
 ]);

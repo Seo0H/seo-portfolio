@@ -1,8 +1,8 @@
 import { components } from '@/components/mdx';
-import Contents from 'contents/index.mdx';
+import Contents from 'contents/main.mdx';
 
-const MainPage = () => {
+const InfoPage = () => {
   return <Contents components={components} />;
 };
 
-export default MainPage;
+export default InfoPage;

@@ -8,7 +8,7 @@ export const components: MDXComponents = {
   wrapper({ components, ...props }) {
     return (
       <main
-        className='prose-m lg:prose-l prose mx-auto max-w-[75ch] dark:prose-invert prose-p:break-keep prose-li:break-keep prose-hr:my-10'
+        className='prose-m lg:prose-l prose max-w-[inherit] dark:prose-invert prose-p:break-keep prose-li:break-keep prose-hr:my-10'
         {...props}
       />
     );
