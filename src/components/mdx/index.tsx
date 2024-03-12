@@ -2,12 +2,13 @@
 import { A } from '@/components/mdx/a/a';
 import { cn } from '@/utils/cn';
 
+import { ImgGallery } from './img-gallery';
 import type { MDXComponents } from 'mdx/types';
 
 export const components: MDXComponents = {
   wrapper({ components, ...props }) {
     return (
-      <main
+      <article
         className='prose-m lg:prose-l prose max-w-[inherit] dark:prose-invert prose-p:break-keep prose-li:break-keep prose-hr:my-10'
         {...props}
       />
@@ -29,4 +30,5 @@ export const components: MDXComponents = {
       {...props}
     />
   ),
+  ImgGallery,
 };
