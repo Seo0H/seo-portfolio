@@ -1,8 +1,9 @@
 import { useId } from 'react';
 
+import Project, { matter } from '@contents/project/sobisa.mdx';
+
 import { components } from '@/components/mdx';
 import { SkillTag } from '@/components/skill-tag';
-import Project, { matter } from 'contents/sobisa.mdx';
 
 const ProjectPage = () => {
   const id = useId();

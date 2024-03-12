@@ -24,9 +24,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "contents/*": ["./src/contents/*"]
+      "@contents/*": ["./contents/*"]
     }
   },
-  "include": ["./src", "./**/*.ts", "./**/*.tsx", "./jest.setup.js"],
+  "include": ["./src", "./**/*.ts", "./**/*.tsx", "./jest.setup.js", "@contents"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

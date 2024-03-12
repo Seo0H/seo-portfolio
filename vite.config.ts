@@ -19,7 +19,7 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@', replacement: '/src' },
-      { find: 'contents', replacement: '/src/contents' },
+      { find: '@contents', replacement: '/contents' },
     ],
   },
   server: {
