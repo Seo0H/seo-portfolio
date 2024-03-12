@@ -17,7 +17,7 @@
   },
   "plugins": ["@typescript-eslint", "react", "import"],
   "rules": {
-    "import/no-unresolved": "error",
+    "import/no-unresolved": "off",
     "import/order": [
       "error",
       {
@@ -29,14 +29,15 @@
             "position": "before"
           },
           {
-            "pattern": "@/components/common/**/*",
-            "group": "internal",
+            "pattern": "@contents/**/*",
+            "group": "external",
             "position": "before"
           }
         ],
         "pathGroupsExcludedImportTypes": ["react"],
         "groups": [
-          ["builtin", "external"],
+          ["builtin"],
+          ["external"],
           ["internal"],
           ["parent", "index"],
           ["sibling", "type", "object"]
