@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 import { A } from '@/components/mdx/a/a';
 import { cn } from '@/utils/cn';
 
@@ -32,11 +33,3 @@ export const components = {
 } satisfies MDXComponents;
 
 export type MDXProvidedComponents = typeof components;
-
-export function useMDXComponents(): MDXProvidedComponents {
-  return components;
-}
-
-declare global {
-  type MDXProvidedComponents = typeof components;
-}
