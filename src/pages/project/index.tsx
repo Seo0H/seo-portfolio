@@ -2,7 +2,6 @@ import { useId } from 'react';
 
 import Project, { matter } from '@contents/project/sobisa/write.mdx';
 
-import { components } from '@/components/mdx';
 import { SkillTag } from '@/components/skill-tag';
 
 const ProjectPage = () => {
@@ -18,7 +17,7 @@ const ProjectPage = () => {
           ))}
         </div>
       </div>
-      <Project components={components} />
+      <Project />
     </>
   );
 };
