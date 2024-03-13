@@ -2,10 +2,9 @@
 import { A } from '@/components/mdx/a/a';
 import { cn } from '@/utils/cn';
 
-import { ImgGallery } from './img-gallery';
 import type { MDXComponents } from 'mdx/types';
 
-export const components: MDXComponents = {
+export const components = {
   wrapper({ components, ...props }) {
     return (
       <article
@@ -30,5 +29,14 @@ export const components: MDXComponents = {
       {...props}
     />
   ),
-  ImgGallery,
-};
+} satisfies MDXComponents;
+
+export type MDXProvidedComponents = typeof components;
+
+export function useMDXComponents(): MDXProvidedComponents {
+  return components;
+}
+
+declare global {
+  type MDXProvidedComponents = typeof components;
+}

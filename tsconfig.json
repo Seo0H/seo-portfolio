@@ -10,8 +10,8 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
+    "isolatedModules": true,
     "jsx": "react-jsx",
 
     /* Linting */
@@ -27,6 +27,9 @@
       "@contents/*": ["./contents/*"]
     }
   },
-  "include": ["./src", "./**/*.ts", "./**/*.tsx", "./jest.setup.js", "@contents"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["./src", "./**/*.ts", "./**/*.tsx", "./jest.setup.js", "./contents", "./**/*.mdx"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "mdx": {
+    "checkMdx": true
+  }
 }

@@ -10,4 +10,7 @@ declare module '*.mdx' {
     skillTag: ('TypeScript' | 'Next.js' | 'React-Query' | 'Styled-Component')[];
     duration: string;
   };
+
+  let MDXComponent: (props) => JSX.Element;
+  export default MDXComponent;
 }
