@@ -7,6 +7,8 @@ const skillClasses: Record<TSkillTag, string> = /*tw*/ {
   'Next.js': 'bg-gray-700 text-gray-50',
   'React-Query': 'bg-gray-200',
   'Styled-Component': 'bg-gray-200',
+  'Github Page': 'bg-gray-200',
+  ContentsLayer: 'bg-gray-200',
 };
 
 export const SkillTag = ({ skill }: { skill: TSkillTag }) => {

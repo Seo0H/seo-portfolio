@@ -4,6 +4,7 @@ declare module '*.mdx' {
 
   export type FrontMatter = {
     title: string;
+    subTitle: string;
     description: string;
     draft: boolean;
     image: string;

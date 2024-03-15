@@ -5,8 +5,9 @@
 		"body": [
 		  "---",
 		  "title: '$1'",
-		  "duration: '$2'",
-		  "skillTag: $3", // TODO:src/types/front-matter의 SkillTag 타입과 연동되게 하는 방법은?
+		  "sub-title:'$2'",
+		  "duration: '$3'",
+		  "skillTag: $4", // TODO:src/types/front-matter의 SkillTag 타입과 연동되게 하는 방법은?
 		  "---",
 		  "",
 		  "$0"

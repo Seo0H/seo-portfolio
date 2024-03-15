@@ -7,6 +7,10 @@ export default {
       height: {
         header: '60px',
       },
+      colors: {
+        'peacock-800': '#125D9E',
+        'peacock-200': '#99C1E4',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],

@@ -1,7 +1,8 @@
 import { useId } from 'react';
 
-import { ImgGallery } from '@/components/img-gallery';
 import { MainImageItemContents } from '@contents/project/components/main-image/types';
+
+import { ImgGallery } from '@/components/img-gallery';
 
 export const ProjectMainImage = ({
   contents,
