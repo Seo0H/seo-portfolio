@@ -1,7 +1,6 @@
 import { ComponentProps, useState } from 'react';
 
-import { ImageModal } from '@contents/project/components/img-gallery/img-moal';
-
+import { ImageModal } from '@/components/img-gallery/img-moal';
 import { cn } from '@/utils/cn';
 
 export const ImgGallery = ({ children, className, ...props }: ComponentProps<'div'>) => {

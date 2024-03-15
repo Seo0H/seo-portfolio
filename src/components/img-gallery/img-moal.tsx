@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-import { Caption } from '@contents/project/components/img-gallery/main';
+import { Caption } from '@/components/img-gallery/main';
 
 import { Portal } from '@/components/common/portal';
 import { Markdown } from '@/components/mdx/utils/markdown-parer';

@@ -1,16 +1,13 @@
 ---
 title: 'SobiSa! : 소비사냥꾼'
-description: ''
-draft: false
-image:
 skillTag: ['TypeScript', 'Next.js', 'React-Query', 'Styled-Component']
 duration: 2023.04 - 2023.07
 ---
 
 import { contents } from "./contents"
-import { ProjectMainImage } from "../components/main-image"
+import { ProjectMainImage } from "../components"
 
-<ProjectMainImage contents={contents}/>
+<ProjectMainImage contents={contents} className='grid-cols-[1.6fr_repeat(2,_1fr)]'/>
 
 ## Project Info
 
@@ -67,6 +64,6 @@ Sobisa 1.0.0 버전에서 실시했던 유저 서베이 결과, 이전 검색기
 
 - `Indexed DB` 사용
 
-  프로젝트에 Back-end가 없었기 때문에, 이전 검색했던 데이터를 다시 확인하기 위해서는 클라이언트에 데이터를 저장해야 했습니다. 기존 초기 방문 유저를 체크하기 위해 `LocalStorage` 를 사용하고 있었고, 상대적으로 큰 데이터를 저장해야 했기에 비동기식으로 작동하는 Indexed DB를 사용해 해당 기능을 구현하였습니다.ProjectMainImage.
+  프로젝트에 Back-end가 없었기 때문에, 이전 검색했던 데이터를 다시 확인하기 위해서는 클라이언트에 데이터를 저장해야 했습니다. 기존 초기 방문 유저를 체크하기 위해 `LocalStorage` 를 사용하고 있었고, 상대적으로 큰 데이터를 저장해야 했기에 비동기식으로 작동하는 Indexed DB를 사용해 해당 기능을 구현하였습니다.
 
 
