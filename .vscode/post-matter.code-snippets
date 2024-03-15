@@ -5,10 +5,8 @@
 		"body": [
 		  "---",
 		  "title: '$1'",
-		  "description: '$2'",
-		  "draft: false",
-		  "image: $3",
-		  "tag: $4",
+		  "duration: '$2'",
+		  "skillTag: $3", // TODO:src/types/front-matter의 SkillTag 타입과 연동되게 하는 방법은?
 		  "---",
 		  "",
 		  "$0"
