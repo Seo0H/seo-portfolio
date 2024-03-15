@@ -1,14 +1,18 @@
 import { useId } from 'react';
 
-import { ImgGallery } from '@contents/project/components/img-gallery';
+import { ImgGallery } from '@/components/img-gallery';
 import { MainImageItemContents } from '@contents/project/components/main-image/types';
 
-import * as styles from './styles';
-
-export const ProjectMainImage = ({ contents }: { contents: MainImageItemContents[] }) => {
+export const ProjectMainImage = ({
+  contents,
+  className,
+}: {
+  contents: MainImageItemContents[];
+  className?: string;
+}) => {
   const id = useId();
   return (
-    <ImgGallery className={styles.mainGridStyle}>
+    <ImgGallery className={className}>
       {contents?.map((el, idx) => {
         return <ImgGallery.Item key={`${id}-ProjectMainImage-${idx}`} {...el} />;
       })}
