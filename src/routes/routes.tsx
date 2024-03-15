@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
     children: [
       { path: '/', loader: () => redirect('/info') },
       { path: '/info', element: <InfoPage /> },
-      { path: '/project', element: <ProjectPage /> },
+      { path: '/project/:id', element: <ProjectPage /> },
     ],
   },
 ]);
