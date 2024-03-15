@@ -20,7 +20,7 @@ const ProjectPage = () => {
       <RoundedBlock
         className={`flex justify-between border-none bg-peacock-800 pb-[20px] font-bold text-peacock-200`}
       >
-        <span>SEO - Project 1</span>
+        <span>SEO - Project {projectKeys.indexOf(id) + 1}</span>
         <span>{matter.duration}</span>
       </RoundedBlock>
 
