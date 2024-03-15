@@ -10,7 +10,6 @@ export const RoundedBlock = ({ className, children, ...props }: ComponentProps<'
         'rounded-lg border border-gray-200 bg-gray-100 px-6 py-3',
         className,
       )}
-      {...props}
     >
       {children}
     </div>
