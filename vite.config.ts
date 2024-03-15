@@ -3,6 +3,16 @@ import { defineConfig } from 'vite';
 import mdx from '@mdx-js/rollup';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+import remarkGfm from 'remark-gfm';
+import rehypePrettyCode, { type Options } from 'rehype-pretty-code';
+
+const prettyCodeOptions: Options = {
+  theme: 'nord',
+  defaultLang: {
+    block: 'plaintext',
+  },
+  keepBackground: false,
+};
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,7 +21,8 @@ export default defineConfig({
       enforce: 'pre',
       ...mdx({
         providerImportSource: '@mdx-js/react',
-        remarkPlugins: [remarkFrontmatter, [remarkMdxFrontmatter, { name: 'matter' }]],
+        remarkPlugins: [remarkFrontmatter, [remarkMdxFrontmatter, { name: 'matter' }], remarkGfm],
+        rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
       }),
     },
     react(),
