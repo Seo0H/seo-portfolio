@@ -4,7 +4,7 @@ import { ImageModal } from '@/components/img-gallery/img-moal';
 import { cn } from '@/utils/cn';
 
 export const ImgGallery = ({ children, className, ...props }: ComponentProps<'div'>) => {
-  return <div className={cn('grid min-h-[600px] grid-cols-3 gap-2', className)}>{children}</div>;
+  return <div className={cn('grid min-h-[600px] grid-cols-3 gap-1', className)}>{children}</div>;
 };
 
 export type Caption = { heading: string; descriptions?: string };
@@ -31,12 +31,12 @@ const Item = ({ className, caption, ...props }: ComponentProps<'img'> & { captio
         )}
         onClick={handleClick}
       >
-        <span className='hidden px-5 pb-3 font-semibold leading-snug text-white group-hover:block'>
+        <span className='z-10 hidden px-5 pb-3 font-semibold leading-snug text-white group-hover:block'>
           {caption?.heading}
         </span>
         <img
           className={`
-            not-prose absolute left-0 top-0 -z-10
+            not-prose absolute left-0 top-0
             h-full w-full object-cover object-top
             group-hover:mix-blend-multiply
             `}

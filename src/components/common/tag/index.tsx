@@ -7,7 +7,7 @@ export const Tag = forwardRef<HTMLButtonElement, ComponentPropsWithRef<'button'>
     return (
       <button
         ref={ref}
-        className={cn('rounded-full px-4 py-1 font-semibold', className)}
+        className={cn('rounded-md px-4 py-1 font-semibold', className)}
         {...props}
       />
     );
