@@ -18,7 +18,7 @@ type Action =
   | { type: 'success'; data: SuccessResult }
   | { type: 'error'; error: ErrorResult };
 
-const openGraphReducer = (sate: OGState, action: Action): OGState => {
+const openGraphReducer = (_: OGState, action: Action): OGState => {
   switch (action.type) {
     case 'loading': {
       return { state: 'loading' };
