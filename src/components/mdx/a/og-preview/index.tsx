@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 
 import { ogCardState } from '@/components/mdx/a/og-preview/conditional-contents';
 
