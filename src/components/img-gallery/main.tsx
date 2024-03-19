@@ -4,7 +4,11 @@ import { ImageModal } from '@/components/img-gallery/img-moal';
 import { cn } from '@/utils/cn';
 
 export const ImgGallery = ({ children, className, ...props }: ComponentProps<'div'>) => {
-  return <div className={cn('grid min-h-[600px] grid-cols-3 gap-1', className)}>{children}</div>;
+  return (
+    <div className={cn('grid min-h-[600px] grid-cols-3 gap-1', className)} {...props}>
+      {children}
+    </div>
+  );
 };
 
 export type Caption = { heading: string; descriptions?: string };
