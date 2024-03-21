@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       maxWidth: {
-        'global-inner-width': '80ch',
+        'global-inner-width': '100ch',
       },
       height: {
         header: headerHeight,
@@ -18,6 +18,9 @@ export default {
       colors: {
         'peacock-800': '#125D9E',
         'peacock-200': '#99C1E4',
+      },
+      spacing: {
+        header: headerHeight,
       },
     },
   },

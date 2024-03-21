@@ -18,7 +18,7 @@ const ProjectPage = () => {
   return (
     <div className='flex flex-col gap-1'>
       <RoundedBlock
-        className={`flex justify-between border-none bg-peacock-800 pb-[20px] font-bold text-peacock-200`}
+        className={`flex justify-between border-none bg-peacock-800 pb-[20px] text-[12px] font-bold text-peacock-200`}
       >
         <span>SEO - Project {projectKeys.indexOf(id) + 1}</span>
         <span>{matter.duration}</span>
