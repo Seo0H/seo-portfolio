@@ -11,8 +11,8 @@ export const router = createBrowserRouter([
   {
     element: (
       <MDXProvider components={components}>
+        <Header />
         <GlobalLayout>
-          <Header />
           <Outlet />
         </GlobalLayout>
       </MDXProvider>
