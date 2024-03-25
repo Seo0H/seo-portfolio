@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 
-import { useDropdownContext } from '@/components/dropdown/context';
+import { useDropdownContext } from '@/components/common/form/dropdown/context';
 import { cn } from '@/utils/cn';
 
 export const Trigger = ({ children, className, ...props }: ComponentProps<'button'>) => {
