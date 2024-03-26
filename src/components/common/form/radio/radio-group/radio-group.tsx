@@ -1,28 +1,8 @@
-import { ComponentPropsWithRef, createContext, forwardRef, useContext } from 'react';
+import { forwardRef } from 'react';
 
-import { UseRadioGroupProps, UseRadioGroupReturn, useRadioGroup } from './use-radio-group';
-
-interface RadioGroupContext
-  extends Pick<UseRadioGroupReturn, 'onChange' | 'value' | 'name' | 'isDisabled'> {}
-
-const RadioGroupContext = createContext<RadioGroupContext | undefined>(undefined);
-
-type Omitted = 'onChange' | 'value' | 'defaultValue' | 'defaultChecked';
-
-type RadioGroupStyleProps = {
-  groupClassName?: string;
-};
-
-interface RadioGroupProps
-  extends UseRadioGroupProps,
-    Omit<ComponentPropsWithRef<'div'>, Omitted>,
-    RadioGroupStyleProps {}
-
-export const useRadioGroupContext = () => {
-  const value = useContext(RadioGroupContext);
-
-  return value;
-};
+import { RadioGroupContext } from './context';
+import type { RadioGroupProps } from './type';
+import { useRadioGroup } from './use-radio-group';
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
   function RadioGroup(props, ref) {
