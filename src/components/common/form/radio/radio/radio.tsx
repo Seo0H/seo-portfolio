@@ -3,7 +3,7 @@ import { type ComponentPropsWithRef, forwardRef, createRef } from 'react';
 import { callAll } from '@/utils/call-all-handlers';
 import { cn } from '@/utils/cn';
 
-import { useRadioGroupContext } from '../radio-group/radio-group';
+import { useRadioGroupContext } from '../radio-group/context';
 
 import { useRadio } from './use-radio';
 import type { UseRadioProps } from '../types';
@@ -12,7 +12,6 @@ type Omitted = 'onChange' | 'defaultChecked' | 'checked' | 'type' | 'value' | 'c
 
 type RadioStyleProps = {
   labelStyle?: string;
-  textStyle?: string;
   inputStyle?: string;
   checkedStyle?: string;
 };
@@ -32,7 +31,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
     value,
     inputStyle,
     labelStyle,
-    textStyle,
     checkedStyle,
     ...rest
   } = props;
@@ -60,15 +58,15 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
     value,
   });
 
-  const radioInputProps = getRadioProps({ onChange, name, ref });
+  const radioInputProps = getRadioProps({ name, ref });
 
   return (
     <label
       htmlFor={radioInputProps.id}
-      className={cn(labelStyle, `custom-radio`, `${radioInputProps.checked && checkedStyle}`)}
+      className={cn(labelStyle, `${radioInputProps.checked && checkedStyle}`, `custom-radio`)}
     >
       <input type='radio' className={inputStyle} {...radioInputProps} />
-      <span className={textStyle}>{children}</span>
+      {children}
     </label>
   );
 });
