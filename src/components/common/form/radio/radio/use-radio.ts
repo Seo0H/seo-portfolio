@@ -54,6 +54,7 @@ export const useRadio = (props: UseRadioProps = {}) => {
     type: 'radio',
     name,
     value,
+    ref,
     checked: isChecked,
     disabled: isDisabled,
     required: isRequired,
