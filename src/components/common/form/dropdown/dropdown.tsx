@@ -1,31 +1,26 @@
-import { ComponentProps } from 'react';
-
 import { RadioGroup } from '@/components/common/form/radio';
 import { cn } from '@/utils/cn';
 
 import { DropdownContext } from './context';
 import { Item } from './item';
+import { List } from './list';
 import { Trigger } from './trigger';
 import { useDropdown } from './use-dropdown';
+import type { RadioGroupProps } from '@/components/common/form/radio/radio-group/type';
 
 export type DropDownProps = {
-  onChange: (value: string) => void;
-} & Omit<ComponentProps<'div'>, 'onChange'>;
+  onChange?: (value: string) => void;
+} & RadioGroupProps;
 
-export const Dropdown = ({ children, onChange, className }: DropDownProps) => {
+export const Dropdown = ({ children, onChange, className, value }: DropDownProps) => {
   const values = useDropdown({ onChange });
-  const { triggerOpen, handleClick } = values;
+  const { handleClick } = values;
+
   // useBackgroundEvent(handleTrigger, [triggerOpen]); // TODO: 배경 클릭 시 드롭다운 닫침
 
   return (
     <DropdownContext.Provider value={values}>
-      <RadioGroup
-        groupClassName={cn(
-          `${triggerOpen && `bg-white shadow-md [&_*]:border-b-[0.5px] border-gray-200`}`,
-          className,
-        )}
-        onChange={handleClick}
-      >
+      <RadioGroup value={value} groupClassName={cn('relative', className)} onChange={handleClick}>
         {children}
       </RadioGroup>
     </DropdownContext.Provider>
@@ -33,4 +28,5 @@ export const Dropdown = ({ children, onChange, className }: DropDownProps) => {
 };
 
 Dropdown.Item = Item;
+Dropdown.List = List;
 Dropdown.Trigger = Trigger;
