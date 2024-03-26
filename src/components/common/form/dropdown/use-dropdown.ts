@@ -12,7 +12,7 @@ export const useDropdown = ({ onChange }: Pick<DropDownProps, 'onChange'>) => {
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
     setTrigger(false);
-    onChange(e.target.value);
+    if (onChange) onChange(e.target.value);
     setTriggerName(e.target.value);
   };
 
