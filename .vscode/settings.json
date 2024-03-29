@@ -16,7 +16,7 @@
     "editor.quickSuggestions": {
       "strings": true
     },
-    "editor.suggest.showConstants": false,
+    // "editor.suggest.showConstants": false,
     "editor.suggest.showConstructors": false,
     "editor.suggest.showCustomcolors": false,
     "editor.suggest.showDeprecated": false,
@@ -43,5 +43,6 @@
     "editor.suggest.showWords": false,
     "editor.suggest.showClasses": false,
     "editor.suggest.showColors": false
-  }
+  },
+  "cSpell.words": ["rehype"]
 }
