@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const headerHeight = '60px';
 
 /** @type {import('tailwindcss').Config} */

@@ -59,6 +59,6 @@
       "typescript": true,
       "node": true
     }
-  },
-  "ignorePatterns": ["*.config.*"]
+  }
+  // "ignorePatterns": ["*.config.*"]
 }
