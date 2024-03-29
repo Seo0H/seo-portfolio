@@ -16,17 +16,22 @@ const ProjectPage = () => {
   const { default: ProjectPost, matter } = ProjectPosts[id];
 
   return (
-    <div className='flex flex-col gap-1 [&_.print-breakpoint]:print:break-inside-avoid'>
+    <div className='flex flex-col gap-1 print:gap-1 [&_.print-breakpoint]:print:break-inside-avoid'>
       <RoundedBlock
-        className={`lex justify-between border-none bg-peacock-800 pb-[20px] text-[12px] font-bold text-peacock-200 print:hidden`}
+        className={`flex justify-between bg-peacock-800 pb-[20px] text-[12px] font-bold
+                    text-peacock-200 print:rounded-none print:bg-white print:py-1 print:font-medium print:text-gray-500`}
       >
         <span>SEO - Project {projectKeys.indexOf(id) + 1}</span>
         <span>{matter.duration}</span>
       </RoundedBlock>
 
-      <RoundedBlock className={`flex translate-y-[-20px] items-center justify-between`}>
+      <RoundedBlock
+        className={`flex translate-y-[-20px] items-center justify-between border border-gray-200  print:translate-y-0 `}
+      >
         <div className='flex flex-col gap-1'>
-          <h1 className='text-sm font-bold leading-tight text-gray-500'>{matter.subTitle}</h1>
+          <h1 className='text-sm font-bold leading-tight text-gray-500 print:font-medium'>
+            {matter.subTitle}
+          </h1>
           <h1 className='text-3xl font-bold'>{matter.title}</h1>
         </div>
         <div className='flex max-w-[60%] flex-wrap items-end justify-end gap-1'>
