@@ -9,6 +9,7 @@ export const contents: MainImageItemContents[] = [
         '소비사냥꾼의 메인 페이지 입니다. 물건을 검색할 수 있는 검색창이 주된 기능이며 소비사의 링크를 공유할 수 있는 링크 버튼이 존재합니다.',
     },
     className: 'col-span-1 row-span-5',
+    isPrint: true,
   },
   {
     src: '/posts/sobisa/2.png',
@@ -17,6 +18,7 @@ export const contents: MainImageItemContents[] = [
       descriptions:
         '소비사냥꾼의 검색 페이지 입니다. 사고 싶은 물건을 검색한 결과가 무한스크롤로 표시됩니다.',
     },
+    isPrint: true,
   },
   {
     src: '/posts/sobisa/3.png',
@@ -35,6 +37,7 @@ export const contents: MainImageItemContents[] = [
         'Onboarding 페이지 이후 나오는 오버레이 설명 기능입니다. 초기 유저에게 직접적인 사용법을 알려주기 위해 구현했습니다.',
     },
     className: 'row-span-4',
+    isPrint: true,
   },
   {
     src: '/posts/sobisa/5.png',
@@ -43,5 +46,6 @@ export const contents: MainImageItemContents[] = [
       descriptions:
         '이전 검색내역 기능 입니다. indexed DB를 이용해 구현하였습니다. 최종 결과 페이지까지 도달했을 시 indexed DB에 정보가 저장되며 Header에서 기록을 이전 확인하고 다시 볼 수 있습니다.',
     },
+    isPrint: true,
   },
 ];

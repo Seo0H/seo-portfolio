@@ -27,4 +27,8 @@ body,
       @apply bg-white;
     }
   }
+
+  @page {
+    margin: 1cm;
+  }
 }
