@@ -13,6 +13,7 @@ export default {
       height: {
         header: headerHeight,
       },
+      maxHeight: { mainImage: '270px' },
       padding: {
         header: headerHeight,
       },

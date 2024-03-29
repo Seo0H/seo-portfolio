@@ -22,6 +22,9 @@ export const components = {
   Captions(props) {
     return <div className='*:text-sm [&_li]:print:m-0' {...props} />;
   },
+  img({ className, ...props }) {
+    return <img className={cn('print:m-0 print:h-[200px]', className)} {...props} />;
+  },
   Block({ className, ...props }) {
     return <RoundedBlock className={cn('0 px-10 [&>*:first-child]:mt-2', className)} {...props} />;
   },
