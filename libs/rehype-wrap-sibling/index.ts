@@ -4,7 +4,7 @@ import { visit } from 'unist-util-visit';
 
 import type { ElementContent, Nodes } from 'hast';
 
-interface Option {
+export interface Options {
   /**
    * support selector syntax
    * url : https://github.com/syntax-tree/hast-util-select?tab=readme-ov-file#support
@@ -14,7 +14,7 @@ interface Option {
   wrapper?: string;
 }
 
-function transform(tree: Nodes, { selector, wrapper }: Option) {
+function transform(tree: Nodes, { selector, wrapper }: Options) {
   if (typeof wrapper !== 'string') {
     throw new TypeError('Expected a `string` as wrapper');
   }
@@ -55,7 +55,7 @@ function transform(tree: Nodes, { selector, wrapper }: Option) {
     });
 }
 
-export default (allOptions: Option[]) => {
+export default (allOptions: Options[]) => {
   return (tree: Nodes) => {
     if (allOptions == null) {
       throw new TypeError('Expected a `string` or an `array` as options');

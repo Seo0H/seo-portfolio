@@ -6,7 +6,7 @@ import remarkGfm from 'remark-gfm';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import { defineConfig } from 'vite';
 
-import rehypeWrapSibling from './@rehype-plugin/wrap-sibling';
+import rehypeWrapSibling from './libs/rehype-wrap-sibling';
 
 const prettyCodeOptions: Options = {
   theme: 'nord',
