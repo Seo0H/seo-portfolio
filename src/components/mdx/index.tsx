@@ -10,14 +10,17 @@ export const components = {
   wrapper({ components, ...props }) {
     return (
       <article
-        className='prose-m lg:prose-l prose max-w-[inherit] dark:prose-invert prose-p:break-keep prose-li:break-keep prose-hr:my-10'
+        className={`prose-m lg:prose-l print:prose-h2:-[0.3rem_0] prose
+                    max-w-[inherit]
+                    dark:prose-invert prose-p:break-keep prose-a:decoration-slate-300 prose-li:break-keep prose-hr:my-10
+                    print:prose-h3:m-[0.3rem_0] print:prose-li:my-1 print:prose-hr:my-6 [&_*]:print:leading-[160%]`}
         {...props}
       />
     );
   },
   a: A,
   Captions(props) {
-    return <div className='*:text-sm' {...props} />;
+    return <div className='*:text-sm [&_li]:print:m-0' {...props} />;
   },
   Block({ className, ...props }) {
     return <RoundedBlock className={cn('0 px-10 [&>*:first-child]:mt-2', className)} {...props} />;

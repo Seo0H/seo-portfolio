@@ -16,9 +16,9 @@ const ProjectPage = () => {
   const { default: ProjectPost, matter } = ProjectPosts[id];
 
   return (
-    <div className='flex flex-col gap-1'>
+    <div className='flex flex-col gap-1 [&_.print-breakpoint]:print:break-inside-avoid'>
       <RoundedBlock
-        className={`flex justify-between border-none bg-peacock-800 pb-[20px] text-[12px] font-bold text-peacock-200`}
+        className={`lex justify-between border-none bg-peacock-800 pb-[20px] text-[12px] font-bold text-peacock-200 print:hidden`}
       >
         <span>SEO - Project {projectKeys.indexOf(id) + 1}</span>
         <span>{matter.duration}</span>
@@ -36,9 +36,9 @@ const ProjectPage = () => {
         </div>
       </RoundedBlock>
 
-      <div className={`translate-y-[-20px] [&_.rounded-block]:mt-1`}>
-        <ProjectPost />
-      </div>
+      <div className='translate-y-[-20px]' />
+
+      <ProjectPost />
     </div>
   );
 };

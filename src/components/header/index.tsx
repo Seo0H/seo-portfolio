@@ -11,7 +11,7 @@ export const Header = ({ className }: Pick<ComponentProps<'div'>, 'className'>) 
   const navigator = useNavigate();
 
   return (
-    <div className={cn('fixed z-10 h-header w-full', 'print:hidden', className)}>
+    <div className={cn('fixed z-10 h-header w-full print:hidden', className)}>
       <div className='mx-auto flex h-full w-full max-w-global-inner-width items-center justify-between gap-2 border-b-2 border-solid bg-white bg-opacity-[0.8] px-4 bg-blend-overlay backdrop-blur-sm md:px-10'>
         <Logo
           width='min(20%, 100px)'
