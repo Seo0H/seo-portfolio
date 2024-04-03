@@ -1,0 +1,25 @@
+org: seo0h
+service: portfolio-s3-lambda
+frameworkVersion: "3"
+
+plugins:
+  - serverless-plugin-typescript
+
+provider:
+  name: aws
+  stage: dev
+  runtime: nodejs18.x
+  region: ap-northeast-2
+  timeout: 60
+  deploymentMethod: direct
+
+custom:
+  bucketName: "seo-lambda"
+  serverlessPluginTypescript:
+    tsConfigFileLocation: "./tsconfig.json"
+
+functions:
+  handler:
+    handler: src/index.handler
+    environment:
+      BUCKET_NAME: ${self:custom.bucketName}
