@@ -7,6 +7,8 @@ import { ProjectDropdown } from '@/components/dropdown/project';
 import { buttons } from '@/styles/buttons';
 import { cn } from '@/utils/cn';
 
+import { DownloadPdf } from '../download-pdf';
+
 export const Header = ({ className }: Pick<ComponentProps<'div'>, 'className'>) => {
   const navigator = useNavigate();
 
@@ -24,9 +26,7 @@ export const Header = ({ className }: Pick<ComponentProps<'div'>, 'className'>) 
           <Link to='/info' className={cn(buttons.default, 'hidden md:block')}>
             INFO
           </Link>
-          <button className={cn(buttons.default, 'hidden md:block')} onClick={window.print}>
-            PDF 저장
-          </button>
+          <DownloadPdf className={cn(buttons.default, 'hidden md:block')}>PDF 저장</DownloadPdf>
 
           <ProjectDropdown />
 
