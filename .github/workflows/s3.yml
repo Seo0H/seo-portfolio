@@ -1,34 +1,40 @@
 name: build and deploy
 on:
- push:
-   branches:
-     - main
+  push:
+    branches:
+      - main
+
+env:
+  VITE_INTERNAL: true
 
 jobs:
- Deploy:
-   runs-on: ubuntu-latest
-   steps:
-     - name: Checkout
-       uses: actions/checkout@v2
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-     - name: Setup node
-       uses: actions/setup-node@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
 
-     - name: Install dependencies
-       run: npm ci
+      - name: Add env file
+        run: echo "${{ secrets.ENV_LOCAL }}" >> .env.production
 
-     - name: Build static file
-       run: npm run build
+      - name: Install dependencies
+        run: npm ci
 
-     - name: Configure AWS Credentials
-       uses: aws-actions/configure-aws-credentials@master
-       with:
-         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-         aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY }}
-         aws-region: ap-northeast-2
+      - name: Build static file
+        run: npm run build
 
-     - name: Deploy static site to S3 bucket
-       run: aws s3 sync ./dist s3://portfolio.seo0h.me --delete
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-region: ap-northeast-2
 
-     - name: Invalidate CloudFront Cache
-       run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_DISTRIBUTION_ID}} --paths "/*"
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync ./dist s3://portfolio.seo0h.me --delete
+
+      - name: Invalidate CloudFront Cache
+        run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_DISTRIBUTION_ID}} --paths "/*"
