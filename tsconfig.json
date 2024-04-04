@@ -27,7 +27,7 @@
       "@contents/*": ["./contents/*"]
     }
   },
-  "include": ["./src/*", "./jest.setup.js", "./contents", "./**/*.mdx"],
+  "include": ["./src/**/*", "./jest.setup.js", "./contents/*"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "mdx": {
     "checkMdx": true
