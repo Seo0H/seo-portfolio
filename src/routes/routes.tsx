@@ -1,21 +1,27 @@
+import { Suspense, lazy } from 'react';
+
 import { MDXProvider } from '@mdx-js/react';
 import { Outlet, createBrowserRouter, redirect } from 'react-router-dom';
 
 import { Header } from '@/components/header';
 import { GlobalLayout } from '@/components/layout/global';
 import { components } from '@/components/mdx';
-import InfoPage from '@/pages/info';
-import ProjectPage from '@/pages/project';
+
+const InfoPage = lazy(() => import('@/pages/info'));
+const ProjectPage = lazy(() => import('@/pages/project'));
 
 export const router = createBrowserRouter([
   {
     element: (
-      <MDXProvider components={components}>
-        <Header />
-        <GlobalLayout>
-          <Outlet />
-        </GlobalLayout>
-      </MDXProvider>
+      // TODO: FIX HARD CODING
+      <Suspense fallback='...loading'>
+        <MDXProvider components={components}>
+          <Header />
+          <GlobalLayout>
+            <Outlet />
+          </GlobalLayout>
+        </MDXProvider>
+      </Suspense>
     ),
     children: [
       { path: '/', loader: () => redirect('/info') },
