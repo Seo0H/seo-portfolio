@@ -12,7 +12,7 @@ export const components = {
       <article
         className={`prose-m lg:prose-l print:prose-h2:-[0.3rem_0] prose
                     max-w-[inherit]
-                    dark:prose-invert prose-p:break-keep prose-a:decoration-slate-300 prose-code:font-extrabold prose-li:break-keep prose-hr:my-10
+                    dark:prose-invert prose-p:break-keep prose-a:decoration-slate-300 prose-code:font-bold prose-li:break-keep prose-hr:my-10
                     print:prose-h3:m-[0.3rem_0] print:prose-li:my-1 print:prose-hr:my-6 [&_*]:print:leading-[160%]`}
         {...props}
       />
@@ -20,7 +20,7 @@ export const components = {
   },
   a: A,
   Captions(props) {
-    return <div className='*:text-sm [&_li]:print:m-0' {...props} />;
+    return <div className='font-light *:text-sm [&_li]:print:m-0' {...props} />;
   },
   img({ className, ...props }) {
     return <img className={cn('print:m-0 print:h-[200px]', className)} {...props} />;
@@ -31,3 +31,7 @@ export const components = {
 } satisfies MDXComponents;
 
 export type MDXProvidedComponents = typeof components;
+
+declare global {
+  type MDXProvidedComponents = typeof components;
+}
