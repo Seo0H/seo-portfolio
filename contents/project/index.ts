@@ -1,2 +1,3 @@
-export * as blog from './blog/write.mdx';
-export * as sobisa from './sobisa/write.mdx';
+export * as portfolio from './portfolio/contents.mdx';
+export * as blog from './blog/contents.mdx';
+export * as sobisa from './sobisa/contents.mdx';
