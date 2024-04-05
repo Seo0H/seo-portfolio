@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 
-import { ImageModal } from '@/components/img-gallery/img-modal';
+import { ImageModal } from '@contents/components/main-image/img-modal';
+
 import { ToggleResult } from '@/components/modal-img';
 import { cn } from '@/utils/cn';
 

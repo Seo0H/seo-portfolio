@@ -1,0 +1,1 @@
+export { DesktopImageGallery } from './pc';
