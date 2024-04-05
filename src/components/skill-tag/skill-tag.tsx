@@ -1,4 +1,5 @@
 import { Tag } from '@/components/common/tag';
+import { cn } from '@/utils/cn';
 
 import type { SkillTag as TSkillTag } from '@/types/front-matter';
 
@@ -11,6 +12,6 @@ const skillClasses: Record<TSkillTag, string> = /*tw*/ {
   ContentsLayer: 'bg-gray-200',
 };
 
-export const SkillTag = ({ skill }: { skill: TSkillTag }) => {
-  return <Tag className={skillClasses[skill]}>{skill}</Tag>;
+export const SkillTag = ({ skill, className }: { skill: TSkillTag; className?: string }) => {
+  return <Tag className={cn(skillClasses[skill], className)}>{skill}</Tag>;
 };
