@@ -1,4 +1,4 @@
-import Contents from '@contents/main.mdx';
+import Contents from '@contents/info/contents.mdx';
 
 const InfoPage = () => {
   return (

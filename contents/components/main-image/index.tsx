@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useId } from 'react';
 
-import { MainImageItemContents } from '@contents/project/components/main-image/types';
+import { MainImageItemContents } from '@contents/components/main-image/types';
 
 import { ImgGallery } from '@/components/img-gallery';
 import { cn } from '@/utils/cn';
@@ -18,15 +18,22 @@ export const ProjectMainImage = ({
 
   return (
     <>
-      <ImgGallery className={cn('print:hidden', className)}>
+      <ImgGallery className={cn('hidden md:grid print:hidden', className)}>
         {contents?.map(({ isPrint, ...el }, idx) => {
           return <ImgGallery.Item key={`${id}-ProjectMainImage-${idx}`} {...el} />;
         })}
       </ImgGallery>
 
+      {/* mobile ver */}
+      <div className='md:hidden'>
+        {contents?.map(({ isPrint, ...el }, idx) => {
+          return <img key={`${id}-ProjectMainImage-${idx}`} {...el} />;
+        })}
+      </div>
+
       {/* print ver */}
       <div
-        className={`not-prose max-h-mainImage hidden h-fit justify-center gap-1 overflow-hidden
+        className={`not-prose hidden h-fit max-h-mainImage justify-center gap-1 overflow-hidden
                     rounded-md border border-gray-300 bg-gray-200 px-2 print:flex`}
       >
         <>
