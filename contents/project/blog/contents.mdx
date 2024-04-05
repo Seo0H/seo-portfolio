@@ -2,46 +2,46 @@
 title: 개발 블로그 제작
 subTitle: isSeo blog
 duration: '2023.08 - 2023.09'
-skillTag: ['TypeScript', 'Next.js', 'Github Page', 'Styled-Component', 'ContentsLayer']
+skillTag: ['TypeScript', 'Next.js', 'Styled-Component', 'MDX', 'Github Page']
 ---
 
-import { ProjectMainImage } from '../components/main-image';
+import { ProjectMainImage } from '@contents/components';
 import { contents } from './contents';
 
 <ProjectMainImage contents={contents} />
 
-    ## Project Info
+## Project Info
 
-    - [배포 링크](https://blog.seo0h.me/ 'preview') | [Github Repo](https://github.com/Seo0H/seo0h.github.io 'preview')
+- [배포 링크](https://blog.seo0h.me/ 'preview') | [Github Repo](https://github.com/Seo0H/seo0h.github.io 'preview')
 
-    ### Summery | 요약
+### Summery | 요약
 
-    - 23년 8월 ~ 9월 간 진행한 개인 블로그 제작 프로젝트
-    - `.mdx` 를 파싱하여 글을 작성하는 블로그
+- 23년 8월 ~ 9월 간 진행한 개인 블로그 제작 프로젝트
+- `.mdx` 를 파싱하여 글을 작성하는 블로그
 
-    ### Personal achievements | 개인 성과
+### Personal achievements | 개인 성과
 
-    - **조회수 기능** - 구현을 위한 nest js 서버 제작 및 AWS E2C , Docker 배포
-    - **배포 CICD** : Github Pages를 이용한 Next.js 정적 배포 CI/CD 구현
-    - **MDX Parsing** : Contentlayer 을 이용한 mdx 파싱
-    - 글 태그 별 **필터링** 구현
-    - 기종별 반응형 대응 / SEO / GA
-        ![](/posts/blog/seo.png)
+- **조회수 기능** - 구현을 위한 nest js 서버 제작 및 AWS E2C , Docker 배포
+- **배포 CICD** : Github Pages를 이용한 Next.js 정적 배포 CI/CD 구현
+- **MDX Parsing** : Contentlayer 을 이용한 mdx 파싱
+- 글 태그 별 **필터링** 구현
+- 기종별 반응형 대응 / SEO / GA
+  ![](/posts/blog/seo.png)
 
-    ---
+---
 
-    ## Trouble shooting | 문제 해결
+## Trouble shooting | 문제 해결
 
-    ### 1. 조회수 기능 구현
+### 1. 조회수 기능 구현
 
-    #### 요구사항
+#### 요구사항
 
-    ```
-    지난 30분간 해당 글을 조회한 적이
-    -> 없으면 조회수 1 증가
-    -> 있으면 조회수 유지
-    ```
+```
+지난 30분간 해당 글을 조회한 적이
+-> 없으면 조회수 1 증가
+-> 있으면 조회수 유지
+```
 
-    ### 1. Github pages에서 Next.js 정적 배포
+### 1. Github pages에서 Next.js 정적 배포
 
-    Github Pages는 jekyll를 이용해 정적 배포됩니다. 그러나 Next.js는 node.js 환경 안에서 빌드되기 때문에, [Github Action을 이용해 빌드 환경을 구축](https://github.com/Seo0H/seo0h.github.io/blob/main/.github/workflows/node.js.yml)했습니다.
+Github Pages는 jekyll를 이용해 정적 배포됩니다. 그러나 Next.js는 node.js 환경 안에서 빌드되기 때문에, [Github Action을 이용해 빌드 환경을 구축](https://github.com/Seo0H/seo0h.github.io/blob/main/.github/workflows/node.js.yml)했습니다.
