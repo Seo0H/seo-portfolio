@@ -4,32 +4,24 @@ import { useId } from 'react';
 
 import { MainImageItemContents } from '@contents/components/main-image/types';
 
-import { ImgGallery } from '@/components/img-gallery';
-import { cn } from '@/utils/cn';
+import { MobileImageGallery } from './mobile';
+import { DesktopImageGallery } from './pc';
 
 export const ProjectMainImage = ({
   contents,
-  className,
+  gridStyle,
 }: {
   contents: MainImageItemContents[];
-  className?: string;
+  gridStyle?: string;
 }) => {
   const id = useId();
 
   return (
     <>
-      <ImgGallery className={cn('hidden md:grid print:hidden', className)}>
-        {contents?.map(({ isPrint, ...el }, idx) => {
-          return <ImgGallery.Item key={`${id}-ProjectMainImage-${idx}`} {...el} />;
-        })}
-      </ImgGallery>
+      <DesktopImageGallery {...{ contents, uniqId: id, gridStyle }} />
 
       {/* mobile ver */}
-      <div className='md:hidden'>
-        {contents?.map(({ isPrint, ...el }, idx) => {
-          return <img key={`${id}-ProjectMainImage-${idx}`} {...el} />;
-        })}
-      </div>
+      <MobileImageGallery {...{ contents, uniqId: id }} />
 
       {/* print ver */}
       <div

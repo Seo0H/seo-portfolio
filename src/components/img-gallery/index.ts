@@ -1,1 +1,0 @@
-export { ImgGallery } from './main';

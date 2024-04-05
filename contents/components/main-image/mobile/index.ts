@@ -1,0 +1,1 @@
+export { MobileImageGallery } from './mobile';
