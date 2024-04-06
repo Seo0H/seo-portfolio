@@ -4,7 +4,7 @@ import { ImageModal } from '@contents/components/main-image/img-modal';
 
 import * as Icon from '@/asset/icon';
 import { ToggleResult } from '@/components/modal-img';
-import { useImgSlider } from '@/hooks/use-img-slider';
+import { useHorizonSlider } from '@/hooks/use-horizon-slider';
 import { cn } from '@/utils/cn';
 
 import { ImageGalleryProps } from '../types';
@@ -16,7 +16,7 @@ export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
   const imagesWrapperRef = useRef<HTMLDivElement>(null);
   const outerContainerRef = useRef<HTMLDivElement>(null);
 
-  const { onNext, onPrev, reset } = useImgSlider({
+  const { onNext, onPrev, reset } = useHorizonSlider({
     imagesWrapperRef,
     visibleWidth: innerWidth,
     contents,

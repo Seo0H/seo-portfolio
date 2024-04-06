@@ -6,7 +6,7 @@ interface UseImgSliderProps<ContentsType> {
   contents: ContentsType[];
 }
 
-export const useImgSlider = <ContentsType>({
+export const useHorizonSlider = <ContentsType>({
   imagesWrapperRef,
   visibleWidth,
   contents,
