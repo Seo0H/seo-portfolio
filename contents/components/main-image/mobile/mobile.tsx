@@ -1,20 +1,42 @@
-import { useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 import { ImageModal } from '@contents/components/main-image/img-modal';
 
 import * as Icon from '@/asset/icon';
 import { ToggleResult } from '@/components/modal-img';
+import { useImgSlider } from '@/hooks/use-img-slider';
 import { cn } from '@/utils/cn';
 
 import { ImageGalleryProps } from '../types';
 
 import { style } from './style';
-import { useImgSlider } from './use-image-slider';
 
 export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
+  const [innerWidth, setInnerWidth] = useState(100);
   const imagesWrapperRef = useRef<HTMLDivElement>(null);
   const outerContainerRef = useRef<HTMLDivElement>(null);
-  const { onNext, onPrev } = useImgSlider(outerContainerRef, imagesWrapperRef, contents);
+
+  const { onNext, onPrev, reset } = useImgSlider({
+    imagesWrapperRef,
+    visibleWidth: innerWidth,
+    contents,
+  });
+
+  useLayoutEffect(() => {
+    adjustImageWidth();
+    window.addEventListener('resize', adjustImageWidth);
+    return () => window.removeEventListener('resize', adjustImageWidth);
+  }, []);
+
+  const adjustImageWidth = () => {
+    if (!outerContainerRef.current || !imagesWrapperRef.current) return;
+    const { width: containerWidth } = outerContainerRef.current.getBoundingClientRect();
+    setInnerWidth(containerWidth);
+
+    // TODO: resize 시 imagesWrapperRef 시작 위치가 조정되지 않는 현상 임시 보정 장치. resize 시 시작 위치 보정하도록 수정
+    imagesWrapperRef.current.style.transform = `translateX(0px)`;
+    reset();
+  };
 
   return (
     <div className='relative h-[50vh] w-full overflow-hidden md:hidden' ref={outerContainerRef}>
