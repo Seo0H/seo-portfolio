@@ -3,7 +3,7 @@ import { ImageModal } from '@contents/components/main-image/img-modal';
 import { ToggleResult } from '@/components/modal-img';
 import { cn } from '@/utils/cn';
 
-import style from '../style';
+import * as style from '../style';
 
 import type { ImageGalleryProps } from '../types';
 
