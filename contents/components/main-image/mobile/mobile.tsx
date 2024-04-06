@@ -1,65 +1,29 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import { ImageModal } from '@contents/components/main-image/img-modal';
 
+import * as Icon from '@/asset/icon';
 import { ToggleResult } from '@/components/modal-img';
 import { cn } from '@/utils/cn';
 
-import style from '../style';
 import { ImageGalleryProps } from '../types';
 
-// TODO: 핸들러 로직 분리
-export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
-  const [activeImageIdx, setImageIdx] = useState(0);
-  const [innerWidth, setInnerWidth] = useState(100);
+import { style } from './style';
+import { useImgSlider } from './use-image-slider';
 
+export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
   const imagesWrapperRef = useRef<HTMLDivElement>(null);
   const outerContainerRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    adjustImageWidth();
-    window.addEventListener('resize', adjustImageWidth);
-    return () => window.removeEventListener('resize', adjustImageWidth);
-  }, []);
-
-  const adjustImageWidth = () => {
-    if (!outerContainerRef.current || !imagesWrapperRef.current) return;
-    const { width: containerWidth } = outerContainerRef.current.getBoundingClientRect();
-    setInnerWidth(containerWidth);
-
-    // TODO: resize 시 imagesWrapperRef 시작 위치가 조정되지 않는 현상 임시 보정 장치. resize 시 시작 위치 보정하도록 수정
-    imagesWrapperRef.current.style.transform = `translateX(0px)`;
-    setImageIdx(0);
-  };
-
-  const nextImageHandler = () => {
-    if (!imagesWrapperRef.current || activeImageIdx >= contents.length - 1) return;
-
-    imagesWrapperRef.current.style.transition = 'all 0.4s ease-in-out';
-    imagesWrapperRef.current.style.transform = `translateX(${-innerWidth * (activeImageIdx + 1)}px)`;
-    setImageIdx(activeImageIdx + 1);
-  };
-
-  const prevImageHandler = () => {
-    if (!imagesWrapperRef.current || !outerContainerRef.current || activeImageIdx === 0) return;
-
-    const { left: imgWrapperLeft } = imagesWrapperRef.current.getBoundingClientRect();
-    const { left: outerLeftPadding } = outerContainerRef.current.getBoundingClientRect();
-    const adjustedCurrentLeftPosition = imgWrapperLeft - outerLeftPadding;
-
-    imagesWrapperRef.current.style.transition = 'all 0.4s ease-in-out';
-    imagesWrapperRef.current.style.transform = `translateX(${adjustedCurrentLeftPosition + innerWidth}px)`;
-    setImageIdx(activeImageIdx - 1);
-  };
+  const { onNext, onPrev } = useImgSlider(outerContainerRef, imagesWrapperRef, contents);
 
   return (
     <div className='relative h-[50vh] w-full overflow-hidden md:hidden' ref={outerContainerRef}>
       <div className='absolute flex h-full w-full cursor-pointer items-center justify-between'>
-        <button onClick={prevImageHandler} className='z-10'>
-          prev
+        <button onClick={onPrev} className='z-10'>
+          <Icon.Arrow.Left className={style.icon} />
         </button>
-        <button onClick={nextImageHandler} className='z-10'>
-          next
+        <button onClick={onNext} className='z-10'>
+          <Icon.Arrow.Right className={style.icon} />
         </button>
       </div>
 
