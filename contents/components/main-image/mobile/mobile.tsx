@@ -1,8 +1,9 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { ComponentProps, useId, useLayoutEffect, useRef, useState } from 'react';
 
 import { ImageModal } from '@contents/components/main-image/img-modal';
 
 import * as Icon from '@/asset/icon';
+import { Indicator } from '@/components/indicator';
 import { ToggleResult } from '@/components/modal-img';
 import { useHorizonSlider } from '@/hooks/use-horizon-slider';
 import { cn } from '@/utils/cn';
@@ -16,7 +17,7 @@ export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
   const imagesWrapperRef = useRef<HTMLDivElement>(null);
   const outerContainerRef = useRef<HTMLDivElement>(null);
 
-  const { onNext, onPrev, reset } = useHorizonSlider({
+  const { onNext, onPrev, reset, activeIdx } = useHorizonSlider({
     imagesWrapperRef,
     visibleWidth: innerWidth,
     contents,
@@ -40,40 +41,47 @@ export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
   };
 
   return (
-    <div className='relative h-[50vh] w-full overflow-hidden md:hidden' ref={outerContainerRef}>
-      <div className='absolute flex h-full w-full cursor-pointer items-center justify-between'>
-        <button onClick={onPrev} className='z-10'>
-          <Icon.Arrow.Left className={style.icon} />
-        </button>
-        <button onClick={onNext} className='z-10'>
-          <Icon.Arrow.Right className={style.icon} />
-        </button>
-      </div>
+    <>
+      <div className='relative h-[50vh] w-full overflow-hidden md:hidden' ref={outerContainerRef}>
+        <div className='absolute flex h-full w-full cursor-pointer items-center justify-between'>
+          <button onClick={onPrev} className='z-10'>
+            <Icon.Arrow.Left className={cn(style.icon, activeIdx === 0 && `opacity-0`)} />
+          </button>
+          <button onClick={onNext} className='z-10'>
+            <Icon.Arrow.Right
+              className={cn(style.icon, activeIdx === contents.length - 1 && `opacity-0`)}
+            />
+          </button>
+        </div>
 
-      <div className='absolute flex' ref={imagesWrapperRef}>
-        {contents?.map(({ isPrint, className, caption, ...props }, idx) => {
-          return (
-            <ToggleResult
-              key={`${uniqId}-image-gallery-${idx}`}
-              className={cn(
-                style.toggleResultLayout,
-                'max-h-[50vh] w-[100vw] bg-slate-100',
-                className,
-              )}
-              clickResult={<ImageModal {...{ caption }} {...props} />}
-              style={{ width: `${innerWidth}px` }}
-            >
-              <span className='absolute z-10 hidden px-5 pb-3 font-semibold leading-snug text-white group-hover:block'>
-                {caption?.heading}
-              </span>
-              <img
-                className={`not-prose h-full w-full object-scale-down group-hover:mix-blend-multiply `}
-                {...props}
-              />
-            </ToggleResult>
-          );
-        })}
+        <div className='absolute flex' ref={imagesWrapperRef}>
+          {contents?.map(({ isPrint, className, caption, ...props }, idx) => {
+            return (
+              <ToggleResult
+                key={`${uniqId}-image-gallery-${idx}`}
+                className={cn(
+                  style.toggleResultLayout,
+                  'max-h-[50vh] w-[100vw] bg-slate-100',
+                  className,
+                )}
+                clickResult={<ImageModal {...{ caption }} {...props} />}
+                style={{ width: `${innerWidth}px` }}
+              >
+                <span className='absolute z-10 hidden px-5 pb-3 font-semibold leading-snug text-white group-hover:block'>
+                  {caption?.heading}
+                </span>
+                <img
+                  className={`not-prose h-full w-full object-scale-down group-hover:mix-blend-multiply `}
+                  {...props}
+                />
+              </ToggleResult>
+            );
+          })}
+        </div>
       </div>
-    </div>
+      <div className='mt-2 flex justify-center gap-1'>
+        <Indicator.Default {...{ length: contents.length, activeIdx, uniqId }} />
+      </div>
+    </>
   );
 }
