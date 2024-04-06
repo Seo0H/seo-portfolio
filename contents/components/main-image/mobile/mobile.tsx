@@ -22,6 +22,7 @@ export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
     contents,
   });
 
+  // TODO: 해당 부분이 useHorizonSlider 의 option 으로 들어가도록 수정
   useLayoutEffect(() => {
     adjustImageWidth();
     window.addEventListener('resize', adjustImageWidth);
