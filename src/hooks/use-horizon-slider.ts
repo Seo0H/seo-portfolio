@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import { useRef, useState } from 'react';
 
 interface UseImgSliderProps<ContentsType> {
-  imagesWrapperRef: React.RefObject<HTMLDivElement>;
   visibleWidth: number;
   contents: ContentsType[];
 }
 
 export const useHorizonSlider = <ContentsType>({
-  imagesWrapperRef,
   visibleWidth,
   contents,
 }: UseImgSliderProps<ContentsType>) => {
   const [activeImageIdx, setImageIdx] = useState(0);
   const [xPosition, setXPosition] = useState(0);
+  const imagesWrapperRef = useRef<HTMLDivElement>(null);
 
   if (imagesWrapperRef.current) {
     imagesWrapperRef.current.style.transition = 'all 0.4s ease-in-out';
@@ -36,5 +35,11 @@ export const useHorizonSlider = <ContentsType>({
     setXPosition(0);
   };
 
-  return { onNext: nextImageHandler, onPrev: prevImageHandler, reset, activeIdx: activeImageIdx };
+  return {
+    ref: imagesWrapperRef,
+    onNext: nextImageHandler,
+    onPrev: prevImageHandler,
+    reset,
+    activeIdx: activeImageIdx,
+  };
 };
