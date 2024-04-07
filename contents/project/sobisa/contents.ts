@@ -1,4 +1,4 @@
-import type { MainImageItemContents } from '@contents/project/components/main-image/types';
+import type { MainImageItemContents } from '@contents/components/main-image/types';
 
 export const contents: MainImageItemContents[] = [
   {

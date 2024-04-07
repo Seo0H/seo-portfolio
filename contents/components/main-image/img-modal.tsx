@@ -1,9 +1,10 @@
 import { ComponentProps } from 'react';
 
 import { Portal } from '@/components/common/portal';
-import { Caption } from '@/components/img-gallery/main';
 import { Markdown } from '@/components/mdx/utils/markdown-parer';
 import { cn } from '@/utils/cn';
+
+import type { Caption } from './types';
 
 export const ImageModal = ({
   onClick,

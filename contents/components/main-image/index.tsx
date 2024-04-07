@@ -2,31 +2,30 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useId } from 'react';
 
-import { MainImageItemContents } from '@contents/project/components/main-image/types';
+import { MainImageItemContents } from '@contents/components/main-image/types';
 
-import { ImgGallery } from '@/components/img-gallery';
-import { cn } from '@/utils/cn';
+import { MobileImageGallery } from './mobile';
+import { DesktopImageGallery } from './pc';
 
 export const ProjectMainImage = ({
   contents,
-  className,
+  gridStyle,
 }: {
   contents: MainImageItemContents[];
-  className?: string;
+  gridStyle?: string;
 }) => {
   const id = useId();
 
   return (
     <>
-      <ImgGallery className={cn('print:hidden', className)}>
-        {contents?.map(({ isPrint, ...el }, idx) => {
-          return <ImgGallery.Item key={`${id}-ProjectMainImage-${idx}`} {...el} />;
-        })}
-      </ImgGallery>
+      <DesktopImageGallery {...{ contents, uniqId: id, gridStyle }} />
+
+      {/* mobile ver */}
+      <MobileImageGallery {...{ contents, uniqId: id }} />
 
       {/* print ver */}
       <div
-        className={`not-prose max-h-mainImage hidden h-fit justify-center gap-1 overflow-hidden
+        className={`not-prose hidden h-fit max-h-mainImage justify-center gap-1 overflow-hidden
                     rounded-md border border-gray-300 bg-gray-200 px-2 print:flex`}
       >
         <>

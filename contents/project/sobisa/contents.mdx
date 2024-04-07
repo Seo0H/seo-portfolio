@@ -5,10 +5,10 @@ skillTag: ['TypeScript', 'Next.js', 'React-Query', 'Styled-Component']
 duration: 2023.04 - 2023.07
 ---
 
-import { contents } from "./contents"
-import { ProjectMainImage } from "../components"
+import { contents } from './contents';
+import { ProjectMainImage } from '@contents/components';
 
-<ProjectMainImage contents={contents} className='grid-cols-[1.6fr_repeat(2,_1fr)]'/>
+<ProjectMainImage contents={contents} gridStyle='grid-cols-[1.6fr_repeat(2,_1fr)]' />
 
 ## Project Info
 
@@ -47,7 +47,6 @@ Sobisa 1.0.0 버전에서 실시했던 유저 서베이 결과, 검색하고 싶
   - 이후, useEffect의 clean-up 함수에서 이전 timeout id를 clear하는 방식으로 마지막으로 감지된 요청만 api 요청으로 보내지도록 구현
   - [디바운스 구현 과정을 정리한 블로그 글](https://blog.seo0h.me/blog/study/debounce 'preview') / [해당 PR](https://github.com/SobiSa-Expense-Hunter/SobiSa/pull/195 'preview')
 
-
 ### 2. 이전 검색내역 보기 구현
 
 - [이전 검색내역 보기 개발 디자인 문서 노션 링크](https://seo0h.notion.site/f8cd84534d99456b8d1e0bc3f4589caf?pvs=4 'preview') - 개발 디자인 문서 노션 페이지 내용을 요약해 해당 내용을 작성하였습니다.
@@ -64,4 +63,4 @@ Sobisa 1.0.0 버전에서 실시했던 유저 서베이 결과, 이전 검색기
 
   프로젝트에 Back-end가 없었기 때문에, 이전 검색했던 데이터를 다시 확인하기 위해서는 클라이언트에 데이터를 저장해야 했습니다. 기존 초기 방문 유저를 체크하기 위해 `LocalStorage` 를 사용하고 있었고, 상대적으로 큰 데이터를 저장해야 했기에 비동기식으로 작동하는 Indexed DB를 사용해 해당 기능을 구현하였습니다.
 
-
+../../components

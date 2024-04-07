@@ -1,4 +1,4 @@
-import type { MainImageItemContents } from '@contents/project/components/main-image/types';
+import type { MainImageItemContents } from '@contents/components/main-image/types';
 
 export const contents: MainImageItemContents[] = [
   { src: '/posts/blog/1.png', className: 'row-span-2 col-span-3 ', isPrint: true },
