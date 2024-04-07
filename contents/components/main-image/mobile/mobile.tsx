@@ -41,11 +41,8 @@ export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
   };
 
   return (
-    <>
-      <div
-        className='relative h-[50vh] w-full overflow-hidden md:hidden print:hidden'
-        ref={outerContainerRef}
-      >
+    <div className='md:hidden print:hidden'>
+      <div className='relative h-[50vh] w-full overflow-hidden' ref={outerContainerRef}>
         <div className='absolute flex h-full w-full cursor-pointer items-center justify-between'>
           <button onClick={onPrev} className='z-10'>
             <Icon.Arrow.Left className={cn(style.icon, activeIdx === 0 && `opacity-0`)} />
@@ -85,6 +82,6 @@ export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
       <div className='mt-2 flex justify-center gap-1'>
         <Indicator.Default {...{ length: contents.length, activeIdx, uniqId }} />
       </div>
-    </>
+    </div>
   );
 }
