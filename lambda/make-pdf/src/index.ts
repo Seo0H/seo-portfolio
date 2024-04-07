@@ -96,7 +96,7 @@ const handler: Handler = async () => {
       Bucket: bucketName,
       ContentType: 'application/pdf',
       CacheControl: 'max-age=31536000',
-      Key: 'seo-portfolio.pdf',
+      Key: `seo-portfolio.pdf`, // TODO: 이전 버전 저장되도록 수정
       StorageClass: 'STANDARD',
     };
 
