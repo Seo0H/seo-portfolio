@@ -14,11 +14,16 @@ import { style } from './style';
 
 export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
   const [innerWidth, setInnerWidth] = useState(100);
-  const imagesWrapperRef = useRef<HTMLDivElement>(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const outerContainerRef = useRef<HTMLDivElement>(null);
 
-  const { onNext, onPrev, reset, activeIdx } = useHorizonSlider({
-    imagesWrapperRef,
+  const {
+    onNext,
+    onPrev,
+    reset,
+    activeIdx,
+    ref: imagesWrapperRef,
+  } = useHorizonSlider({
     visibleWidth: innerWidth,
     contents,
   });
@@ -26,18 +31,24 @@ export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
   // TODO: 해당 부분이 useHorizonSlider 의 option 으로 들어가도록 수정
   useLayoutEffect(() => {
     adjustImageWidth();
+    // TODO: ResizeObserver 수정
+    // 참고 link : https://github.com/femioladeji/react-slideshow/blob/master/src/slide.tsx
     window.addEventListener('resize', adjustImageWidth);
     return () => window.removeEventListener('resize', adjustImageWidth);
   }, []);
 
   const adjustImageWidth = () => {
     if (!outerContainerRef.current || !imagesWrapperRef.current) return;
+
     const { width: containerWidth } = outerContainerRef.current.getBoundingClientRect();
     setInnerWidth(containerWidth);
 
-    // TODO: resize 시 imagesWrapperRef 시작 위치가 조정되지 않는 현상 임시 보정 장치. resize 시 시작 위치 보정하도록 수정
-    imagesWrapperRef.current.style.transform = `translateX(0px)`;
-    reset();
+    if (windowWidth !== window.innerWidth) {
+      // TODO: resize 시 imagesWrapperRef 시작 위치가 조정되지 않는 현상 임시 보정 장치. resize 시 시작 위치 보정하도록 수정
+      imagesWrapperRef.current.style.transform = `translateX(0px)`;
+      reset();
+      setWindowWidth(window.innerWidth);
+    }
   };
 
   return (
