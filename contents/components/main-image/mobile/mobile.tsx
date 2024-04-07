@@ -1,4 +1,4 @@
-import { ComponentProps, useId, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 import { ImageModal } from '@contents/components/main-image/img-modal';
 

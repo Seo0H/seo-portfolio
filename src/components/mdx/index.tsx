@@ -29,9 +29,3 @@ export const components = {
     return <RoundedBlock className={cn('0 px-10 [&>*:first-child]:mt-2', className)} {...props} />;
   },
 } satisfies MDXComponents;
-
-export type MDXProvidedComponents = typeof components;
-
-declare global {
-  type MDXProvidedComponents = typeof components;
-}
