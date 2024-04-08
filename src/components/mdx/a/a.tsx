@@ -1,16 +1,23 @@
-import { ComponentProps } from 'react';
+import { ComponentProps, useState } from 'react';
 
-import { useOgPreview } from '@/components/mdx/a/hook';
-import { OGPreviewCard } from '@/components/mdx/a/og-preview';
+import { OGPreviewCard } from '@/components/og-preview';
+import { debounce } from '@/utils/debounce';
 
 export const A = (props: ComponentProps<'a'>) => {
-  const { openGraph, isShown: isHover, handleShowPreview } = useOgPreview(props);
-  const handleHover = handleShowPreview('mouseenter');
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseEnter = debounce(() => setIsHover(true));
+  const handleMouseLeave = debounce(() => setIsHover(false));
 
   return (
     <>
-      <OGPreviewCard {...{ isHover, openGraph }} />
-      <a target='_blank' onMouseEnter={handleHover} onMouseLeave={handleHover} {...props} />
+      {isHover && <OGPreviewCard url={props.href ?? ''} />}
+      <a
+        target='_blank'
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        {...props}
+      />
     </>
   );
 };

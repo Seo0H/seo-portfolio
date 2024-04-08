@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 import { Spinner } from '@/components/common/spinner';
 
-import type { OGState } from '@/components/mdx/a/reducer';
+import type { OGState } from '@/hooks/og/reducer';
 
 export const ogCardState: Record<
   OGState['state'],

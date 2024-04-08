@@ -34,4 +34,4 @@ const openGraphReducer = (_: OGState, action: Action): OGState => {
   }
 };
 
-export const useOG = () => useReducer(openGraphReducer, initialOGState);
+export const useOGReducer = () => useReducer(openGraphReducer, initialOGState);
