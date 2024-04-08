@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 
 import { cn } from '@/utils/cn';
 
-export const Spinner = ({ className, ...props }: ComponentProps<'svg'>) => {
+const Default = ({ className, ...props }: ComponentProps<'svg'>) => {
   return (
     <svg
       aria-hidden='true'
@@ -26,3 +26,5 @@ export const Spinner = ({ className, ...props }: ComponentProps<'svg'>) => {
     </svg>
   );
 };
+
+export const Spinner = { Default };

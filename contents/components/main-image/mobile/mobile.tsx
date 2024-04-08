@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 
 import { ImageModal } from '@contents/components/main-image/img-modal';
 
-import * as Icon from '@/asset/icon';
+import { Icon } from '@/asset';
 import { Indicator } from '@/components/indicator';
 import { ToggleResult } from '@/components/modal-img';
 import { useHorizonSlider } from '@/hooks/use-horizon-slider';

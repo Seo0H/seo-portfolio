@@ -6,6 +6,7 @@ import { Outlet, createBrowserRouter, redirect } from 'react-router-dom';
 import { Header } from '@/components/header';
 import { GlobalLayout } from '@/components/layout/global';
 import { components } from '@/components/mdx';
+import { OGProvider } from '@/hooks/og';
 
 const InfoPage = lazy(() => import('@/pages/info'));
 const ProjectPage = lazy(() => import('@/pages/project'));
@@ -15,12 +16,14 @@ export const router = createBrowserRouter([
     element: (
       // TODO: FIX HARD CODING
       <Suspense fallback='...loading'>
-        <MDXProvider components={components}>
-          <Header />
-          <GlobalLayout>
-            <Outlet />
-          </GlobalLayout>
-        </MDXProvider>
+        <OGProvider>
+          <MDXProvider components={components}>
+            <Header />
+            <GlobalLayout>
+              <Outlet />
+            </GlobalLayout>
+          </MDXProvider>
+        </OGProvider>
       </Suspense>
     ),
     children: [
