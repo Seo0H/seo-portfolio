@@ -1,22 +1,18 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
-
-import axios from 'axios';
+import { ComponentProps, useLayoutEffect, useRef } from 'react';
 
 import { ogCardState } from '@/components/og-preview/conditional-contents';
-import { useOGData } from '@/hooks/og/use-og-data';
+import { useOGContext } from '@/hooks/og';
+import { cn } from '@/utils/cn';
 
-export const OGPreviewCard = ({ url }: { url: string }) => {
-  const { openGraph, getOGData } = useOGData(url);
+export const OGPreviewCard = ({
+  url,
+  className,
+  ...props
+}: ComponentProps<'div'> & { url: string }) => {
+  const openGraph = useOGContext(url);
   const { state } = openGraph;
 
   const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const CancelToken = axios.CancelToken;
-    const source = CancelToken.source();
-    getOGData(source);
-    return () => source.cancel();
-  }, [url]);
 
   useLayoutEffect(() => {
     window.addEventListener('mousemove', handelCardPosition);
@@ -49,8 +45,12 @@ export const OGPreviewCard = ({ url }: { url: string }) => {
   return (
     <div
       ref={cardRef}
-      className={`absolute z-10 m-0 flex w-[20rem] flex-col overflow-hidden
-                  rounded-md border-[1px] border-solid border-slate-300 bg-slate-50 shadow-md `}
+      className={cn(
+        `absolute z-10 m-0 flex w-[20rem] flex-col overflow-hidden
+                  rounded-md border-[1px] border-solid border-slate-300 bg-slate-50 shadow-md`,
+        className,
+      )}
+      {...props}
     >
       {ogCardState[state](openGraph)}
     </div>
