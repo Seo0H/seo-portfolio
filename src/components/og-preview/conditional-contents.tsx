@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
 import type { ReactNode } from 'react';
 
-import { Spinner } from '@/components/common/spinner';
+import { Icon } from '@/asset';
 
 import type { ErrorOGState, OGStateData, SuccessOGState } from '@/hooks/og';
 
 export const ogCardState: Record<OGStateData['state'], (props: OGStateData) => ReactNode> = {
   loading: () => (
     <div role='status' className='flex min-h-[9rem] w-full flex-1 items-center justify-center'>
-      <Spinner />
+      <Icon.Spinner.Default />
     </div>
   ),
 
@@ -38,9 +38,20 @@ export const ogCardState: Record<OGStateData['state'], (props: OGStateData) => R
   // TODO: ERROR 처리
   error: (props: OGStateData) => {
     if (!isErrorOgData(props)) return;
-    console.log('🚀 ~ isErrorOgData ~ props:', props);
+    const { error } = props;
 
-    return <div>ERROR!</div>;
+    return (
+      <div
+        role='status'
+        className='flex min-h-[9rem] w-full flex-1 flex-col items-center justify-center gap-2'
+      >
+        <Icon.Exclamation.Triangle className='size-9 stroke-slate-500' />
+        <div className='flex flex-col items-center justify-center gap-0 text-sm'>
+          <span>잠시 후 다시 시도해 보세요.</span>
+          <span>Error message : {error.toString()}</span>
+        </div>
+      </div>
+    );
   },
 };
 
