@@ -26,11 +26,9 @@ export const Header = ({ className }: Pick<ComponentProps<'div'>, 'className'>) 
           <Link to='/info' className={cn(buttons.default, 'hidden md:block')}>
             INFO
           </Link>
-          <DownloadPdf className={cn(buttons.default, 'hidden md:block')}>PDF 저장</DownloadPdf>
+          <DownloadPdf className={cn(buttons.default)}>PDF 저장</DownloadPdf>
 
           <ProjectDropdown />
-
-          <button className={cn(buttons.default, 'block md:hidden')}>햄버거</button>
         </div>
       </div>
     </div>
