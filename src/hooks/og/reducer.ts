@@ -1,6 +1,8 @@
 import { useReducer } from 'react';
 
-import type { ErrorResult, SuccessResult } from 'open-graph-scraper';
+import type { ErrorResult as OGErrorResult, SuccessResult } from 'open-graph-scraper';
+
+type ErrorResult = OGErrorResult | string;
 
 export type OGState =
   | {
@@ -8,6 +10,9 @@ export type OGState =
     }
   | { state: 'success'; data: SuccessResult }
   | { state: 'error'; error: ErrorResult };
+
+export type SuccessOGState = Extract<OGState, { state: 'success' }>;
+export type ErrorOGState = Extract<OGState, { state: 'error' }>;
 
 const initialOGState: OGState = {
   state: 'loading',

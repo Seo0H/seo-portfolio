@@ -36,6 +36,7 @@ export const OGPreviewCard = ({ url }: { url: string }) => {
     const isCardOverflowWindow = cardRight > screenRight;
     // FIXME: 카드 overflow 시 화면 x축 스크롤 생성 방지
     if (isCardOverflowWindow) {
+      cardRight > screenRight;
       cardRef.current.style.right = `${screenRight - left}px`;
     } else {
       cardRef.current.style.left = `${left}px`;
@@ -51,7 +52,7 @@ export const OGPreviewCard = ({ url }: { url: string }) => {
       className={`absolute z-10 m-0 flex w-[20rem] flex-col overflow-hidden
                   rounded-md border-[1px] border-solid border-slate-300 bg-slate-50 shadow-md `}
     >
-      {ogCardState[state](state === 'success' ? openGraph : undefined)}
+      {ogCardState[state](openGraph)}
     </div>
   );
 };

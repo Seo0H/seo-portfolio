@@ -23,8 +23,9 @@ export const useOGData = (url: string) => {
         if (isOgError(data)) dispatchOpenGraph({ type: 'error', error: data });
         else dispatchOpenGraph({ type: 'success', data });
       } catch (error) {
-        if (error instanceof Error) console.error('에러 발생:', error.message);
-        else throw error;
+        if (error instanceof Error) {
+          dispatchOpenGraph({ type: 'error', error: error.message });
+        } else throw error;
       }
     },
     [url],

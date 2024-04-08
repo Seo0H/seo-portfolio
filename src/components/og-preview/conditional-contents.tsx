@@ -3,22 +3,17 @@ import type { ReactNode } from 'react';
 
 import { Spinner } from '@/components/common/spinner';
 
-import type { OGState } from '@/hooks/og/reducer';
+import type { ErrorOGState, OGState, SuccessOGState } from '@/hooks/og/reducer';
 
-export const ogCardState: Record<
-  OGState['state'],
-  (props: Extract<OGState, { state: 'success' }> | undefined) => ReactNode
-> = {
+export const ogCardState: Record<OGState['state'], (props: OGState) => ReactNode> = {
   loading: () => (
     <div role='status' className='flex min-h-[9rem] w-full flex-1 items-center justify-center'>
       <Spinner />
     </div>
   ),
 
-  success: (props: Extract<OGState, { state: 'success' }> | undefined) => {
-    if (!props) {
-      throw new Error('og card error');
-    }
+  success: (props: OGState) => {
+    if (!isSuccessOgData(props)) return;
 
     const {
       data: { result },
@@ -41,5 +36,19 @@ export const ogCardState: Record<
     );
   },
   // TODO: ERROR 처리
-  error: () => undefined,
+  error: (props: OGState) => {
+    if (!isErrorOgData(props)) return;
+
+    return <div>ERROR!</div>;
+  },
+};
+
+const isSuccessOgData = (ogState: OGState): ogState is SuccessOGState => {
+  if (ogState.state === 'success') return true;
+  return false;
+};
+
+const isErrorOgData = (ogState: OGState): ogState is ErrorOGState => {
+  if (ogState.state === 'error') return true;
+  return false;
 };
