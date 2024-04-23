@@ -17,7 +17,7 @@ const ProjectPage = () => {
   const projectSubTitle = `Project ${projectKeys.indexOf(id) + 1}`;
 
   return (
-    <div className='flex flex-col gap-1'>
+    <div className='flex flex-col gap-1 print:[&_h2]:mt-4'>
       {/* PC View */}
       <div className='print:hidden'>
         <RoundedBlock
@@ -46,7 +46,7 @@ const ProjectPage = () => {
       </div>
 
       {/* Mobile View */}
-      <div className='flex flex-col gap-2 md:hidden print:block'>
+      <div className='mb-4 flex flex-col gap-2 md:hidden print:block'>
         <h1 className='text-base font-semibold text-peacock-800'>{projectSubTitle}</h1>
         <span className='text-3xl font-extrabold text-black'>{matter.title}</span>
 
