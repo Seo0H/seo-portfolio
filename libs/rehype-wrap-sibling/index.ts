@@ -23,7 +23,7 @@ function transform(tree: Nodes, { selector, wrapper }: Options) {
     throw new TypeError('Expected a `string` as selector');
   }
 
-  for (const match of selectAll(selector, tree))
+  for (const match of selectAll(selector, tree)) {
     visit(tree, match, (node, idx, parent) => {
       if (idx === undefined || parent === undefined) return;
 
@@ -31,7 +31,7 @@ function transform(tree: Nodes, { selector, wrapper }: Options) {
       let upperSibling: ElementContent | undefined = undefined;
       let upperSiblingIdx = -1;
 
-      for (let i = idx; i >= 0; i--) {
+      for (let i = idx - 1; i >= 0; i--) {
         const target = parent.children[i];
         if ('tagName' in target === false) continue;
         const isHeadingType = target.tagName[0] === 'h';
@@ -53,6 +53,7 @@ function transform(tree: Nodes, { selector, wrapper }: Options) {
         ...parent.children.slice(idx + 1),
       ];
     });
+  }
 }
 
 export default (allOptions: Options[]) => {
