@@ -19,10 +19,14 @@ export const ImageModal = ({
         {...{ onClick }}
       >
         <div className='absolute top-0 z-10 flex h-full w-full items-center justify-center'>
-          <div className='flex h-[60vh] w-[50ch] flex-col justify-around rounded-xl border border-gray-400 bg-gray-800 bg-opacity-30 p-3 text-white backdrop-blur-sm'>
-            <div className='max-h-[80%] overflow-hidden rounded-md bg-slate-800'>
-              <img className={cn('h-full w-full object-contain py-2', className)} {...props} />
+          <div className='flex max-h-[70vh] max-w-[70vw] flex-col justify-around rounded-xl border border-gray-400 bg-gray-800 bg-opacity-30 p-3 text-white backdrop-blur-sm'>
+            <div className='overflow-auto'>
+              <img
+                className={cn('h-full w-full rounded-md object-contain', className)}
+                {...props}
+              />
             </div>
+
             <div>
               <h2 className='text-xl font-bold'>{caption?.heading}</h2>
               <p className='break-words break-keep text-sm font-light [&_a]:underline'>

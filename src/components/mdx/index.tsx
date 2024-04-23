@@ -1,8 +1,12 @@
 /* eslint-disable react/prop-types */
 
+import { ImageModal } from '@contents/components/main-image/img-modal';
+
 import { RoundedBlock } from '@/components/common/block/inext';
 import { A } from '@/components/mdx/a/a';
 import { cn } from '@/utils/cn';
+
+import { ToggleResult } from '../modal-img';
 
 import type { MDXComponents } from 'mdx/types';
 
@@ -25,14 +29,15 @@ export const components = {
   img({ className, alt, ...props }) {
     return (
       <div className='flex flex-col items-start justify-center gap-1'>
-        <img
-          className={cn(
-            'not-prose max-h-[300px] rounded-xl border border-gray-200 print:max-h-[7cm] print:object-contain',
-            className,
-          )}
-          {...props}
-        />
-
+        <ToggleResult clickResult={<ImageModal src={props.src} />} className='cursor-pointer '>
+          <img
+            className={cn(
+              'not-prose max-h-[300px] rounded-xl border border-gray-200 shadow-gray-100 hover:shadow-lg print:max-h-[7cm] print:object-contain',
+              className,
+            )}
+            {...props}
+          />
+        </ToggleResult>
         <div className='text-[12px] text-gray-500 print:max-w-[15cm]'>{alt}</div>
       </div>
     );
