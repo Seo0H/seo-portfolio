@@ -4,6 +4,7 @@ import rehypePrettyCode, { type Options } from 'rehype-pretty-code';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+import remarkUnwrapImages from 'remark-unwrap-images';
 import { defineConfig } from 'vite';
 
 import rehypeWrapSibling from './libs/rehype-wrap-sibling';
@@ -23,13 +24,15 @@ export default defineConfig({
       enforce: 'pre',
       ...mdx({
         providerImportSource: '@mdx-js/react',
-        remarkPlugins: [remarkFrontmatter, [remarkMdxFrontmatter, { name: 'matter' }], remarkGfm],
+        remarkPlugins: [
+          remarkFrontmatter,
+          [remarkMdxFrontmatter, { name: 'matter' }],
+          remarkGfm,
+          remarkUnwrapImages,
+        ],
         rehypePlugins: [
           [rehypePrettyCode, prettyCodeOptions],
-          [
-            rehypeWrapSibling,
-            { selector: 'h2 + *, h3 + *, h4 + *', wrapper: 'div.print-breakpoint' },
-          ],
+          [rehypeWrapSibling, { selector: 'h4 + *', wrapper: 'div.print-breakpoint' }],
         ],
       }),
     },
