@@ -1,0 +1,24 @@
+name: make pdf to invoke lambda function
+on:
+  workflow_run:
+    workflows: ['Build And Deploy to S3']
+    types: [completed]
+
+permissions:
+  id-token: write
+
+jobs:
+  trigger_lambda:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.DEV_OIDC_ROLE_ARN }}
+          aws-region: ap-northeast-2
+
+      - name: Invoke make PDF Lambda Function
+        run: 'aws lambda invoke
+          --function-name portfolio-s3-lambda-dev-handler
+          response.json'

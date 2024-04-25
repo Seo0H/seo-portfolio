@@ -1,4 +1,4 @@
-name: build and deploy
+name: Build And Deploy to S3
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ env:
   VITE_INTERNAL: true
 
 jobs:
-  Deploy:
+  deploy_s3:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
