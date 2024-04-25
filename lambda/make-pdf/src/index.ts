@@ -7,6 +7,9 @@ import puppeteer, { type Browser } from 'puppeteer-core';
 
 import type { Handler } from 'aws-lambda';
 
+const projectPaths = ['sobisa', 'portfolio', 'blog'].map((el) => `project/${el}`);
+const paths = ['info', ...projectPaths];
+
 const merger = new PDFMerger();
 // TODO: 마이그래이션 @aws-sdk/client-s3
 const S3 = new AWS.S3({
@@ -43,45 +46,20 @@ const handler: Handler = async () => {
 
     console.log(`✅ Make page success`);
 
-    // TODO: url hard coding 제거
-    await page.goto('https://portfolio.seo0h.me/info', {
-      waitUntil: 'networkidle2',
+    paths.forEach(async (path) => {
+      await page?.goto(`https://portfolio.seo0h.me/${path}`, {
+        waitUntil: 'networkidle2',
+      });
+
+      await page?.evaluateHandle('document.fonts.ready');
+
+      await merger.add(
+        await page?.pdf({
+          format: 'a4',
+          printBackground: true,
+        }),
+      );
     });
-
-    await page.evaluateHandle('document.fonts.ready');
-
-    await merger.add(
-      await page.pdf({
-        format: 'a4',
-        printBackground: true,
-      }),
-    );
-
-    await page.goto('https://portfolio.seo0h.me/project/blog', {
-      waitUntil: 'networkidle2',
-    });
-
-    await page.evaluateHandle('document.fonts.ready');
-
-    await merger.add(
-      await page.pdf({
-        format: 'a4',
-        printBackground: true,
-      }),
-    );
-
-    await page.goto('https://portfolio.seo0h.me/project/sobisa', {
-      waitUntil: 'networkidle2',
-    });
-
-    await page.evaluateHandle('document.fonts.ready');
-
-    await merger.add(
-      await page.pdf({
-        format: 'a4',
-        printBackground: true,
-      }),
-    );
 
     await merger.setMetadata({
       producer: 'react, AWS Lambda, serverless, puppeteer ',
