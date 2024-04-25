@@ -19,6 +19,9 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: Invoke make PDF Lambda Function
-        run: 'aws lambda invoke
+        run: aws lambda invoke
           --function-name portfolio-s3-lambda-dev-handler
-          response.json'
+          response.json
+
+      - name: Response message from Lambda Function
+        run: echo "$(<response.json )"
