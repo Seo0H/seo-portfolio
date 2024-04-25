@@ -1,0 +1,11 @@
+.scroll-bar {
+  @apply overflow-y-scroll rounded-bl-md rounded-br-none rounded-tl-md;
+}
+
+.scroll-bar::-webkit-scrollbar {
+  @apply w-3 rounded-br-md rounded-tr-md bg-gray-600;
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  @apply border-[3px] border-solid border-transparent bg-slate-400 bg-clip-padding;
+}
