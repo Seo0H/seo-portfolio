@@ -19,7 +19,7 @@ const ProjectPage = () => {
   return (
     <div className='flex flex-col gap-1 print:[&_h2]:mt-4'>
       {/* PC View */}
-      <div className='print:hidden'>
+      <div className='hidden h-[100px] md:block print:hidden'>
         <RoundedBlock
           className={`hidden justify-between bg-peacock-800 pb-[20px] text-[12px] font-bold text-peacock-200 md:flex`}
         >
@@ -60,7 +60,6 @@ const ProjectPage = () => {
           ))}
         </div>
       </div>
-      <div className='translate-y-[-20px]' />
 
       <ProjectPost />
     </div>
