@@ -2,6 +2,57 @@
 title: '포트폴리오 웹사이트'
 subTitle: 'isSeo Portfolio'
 duration: '2024.03 - 2024.04'
-skillTag:
-  ['React', 'TypeScript', 'React Router Dom', 'Vite', 'AWS S3', 'AWS Lambda', 'Github Action']
 ---
+
+export { skillTags } from './contents';
+import { ProjectMainImage } from '@contents/components';
+import { contents } from './contents';
+
+<ProjectMainImage contents={contents} />
+
+## Project Info
+
+- [배포 링크](https://portfolio.seo0h.me 'preview') | [Github Repo](https://github.com/Seo0H/seo-portfolio 'preview')
+
+### Summery | 요약
+
+- 24년 3월 ~ 4월 간 진행한 포트폴리오 사이트 제작 프로젝트
+- `mdx` 를 이용한 포트폴리오를 작성
+- 배포된 웹 포트폴리오를 lambda를 이용해 PDF로 제작
+
+### Personal achievements | 개인 성과
+
+- **Web To PDF** : 포트폴리오 웹사이트를 Lambda 를 이용해 PDF 로 변환하여 유저가 다운로드 할 수 있도록 구현
+- **Open Graph Privew** : `a` tag의 연결된 링크의 Open Graph 정보를 받아와 미리보기 제공
+- **정적 배포** : `AWS S3`, `Cloud Front`를 이용한 정적 배포
+- **CI/CD** : github action 을 이용한 빌드와 배포 자동화
+- `MDX` 를 이용한 포트폴리오 컨텐츠 제작
+- 모바일 대응
+
+## Trouble shooting | 문제 해결
+
+### 1. Web to PDF - 웹사이트 PDF 변환 및 다운로드
+
+#### 요구사항 정의
+
+-
+
+#### 요구사항 구체화
+
+-
+
+#### 구현 방식
+
+---
+
+### 2. Open Graph 미리보기 제공
+
+#### 요구사항 정의
+
+-
+
+#### 요구사항 구체화
+
+-
+
+#### 구현 방식
