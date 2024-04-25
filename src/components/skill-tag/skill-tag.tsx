@@ -1,17 +1,26 @@
 import { Tag } from '@/components/common/tag';
+import { SkillTagMap, type SkillTag as TSkillTag } from '@/types/front-matter';
+import { getKeyFromObject } from '@/types/utils';
 import { cn } from '@/utils/cn';
 
-import type { SkillTag as TSkillTag } from '@/types/front-matter';
+type StyleMap = Record<TSkillTag, string>;
 
-const skillClasses: Record<TSkillTag, string> = /*tw*/ {
-  TypeScript: 'bg-sky-600 text-gray-50',
-  'Next.js': 'bg-gray-700 text-gray-50',
-  'React-Query': 'bg-gray-200',
-  'Styled-Component': 'bg-gray-200',
-  'Github Page': 'bg-gray-200',
-  ContentsLayer: 'bg-gray-200',
-};
+const styleMap = getKeyFromObject<TSkillTag>(SkillTagMap).reduce<StyleMap>((styleMap, skillTag) => {
+  let styleClass = /*tw*/ 'bg-gray-200';
+
+  if (skillTag === 'TypeScript') {
+    styleClass = 'bg-sky-600 text-gray-50';
+  }
+
+  if (skillTag === 'Next.js') {
+    styleClass = 'bg-gray-700 text-gray-50';
+  }
+
+  styleMap[skillTag] = styleClass;
+
+  return styleMap;
+}, {} as StyleMap);
 
 export const SkillTag = ({ skill, className }: { skill: TSkillTag; className?: string }) => {
-  return <Tag className={cn(skillClasses[skill], className)}>{skill}</Tag>;
+  return <Tag className={cn(styleMap[skill], className)}>{skill}</Tag>;
 };

@@ -13,7 +13,7 @@ const ProjectPage = () => {
   const { id } = useParams();
   if (!isPostType(id)) throw new Error('');
 
-  const { default: ProjectPost, matter } = ProjectPosts[id];
+  const { default: ProjectPost, matter, skillTags } = ProjectPosts[id];
   const projectSubTitle = `Project ${projectKeys.indexOf(id) + 1}`;
 
   return (
@@ -38,7 +38,7 @@ const ProjectPage = () => {
           </div>
 
           <div className='hidden max-w-[60%] flex-wrap items-end justify-end gap-1 md:flex'>
-            {matter.skillTag.map((skill) => (
+            {skillTags.map((skill) => (
               <SkillTag key={`${uniqId}-${skill}`} skill={skill} />
             ))}
           </div>
@@ -51,7 +51,7 @@ const ProjectPage = () => {
         <span className='text-3xl font-extrabold text-black'>{matter.title}</span>
 
         <div className='mt-4 flex flex-wrap gap-[3px_5px] whitespace-nowrap font-light  text-gray-500'>
-          {matter.skillTag.map((skill) => (
+          {skillTags.map((skill) => (
             <SkillTag
               key={`${uniqId}-${skill}`}
               skill={skill}

@@ -1,5 +1,9 @@
 import type { MainImageItemContents } from '@contents/components/main-image/types';
 
+import { SkillTag } from '@/types/front-matter';
+
+export const skillTags: SkillTag[] = ['TypeScript', 'Next.js', 'React-Query', 'Styled-Component'];
+
 export const contents: MainImageItemContents[] = [
   {
     src: '/posts/sobisa/1.png',

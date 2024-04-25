@@ -1,45 +1,46 @@
 {
-	"Post Matter": {
-		"prefix": ["---"],
-		"description": "Output a file header with the file name and date",
-		"body": [
-		  "---",
-		  "title: '$1'",
-		  "sub-title:'$2'",
-		  "duration: '$3'",
-		  "skillTag: $4", // TODO:src/types/front-matter의 SkillTag 타입과 연동되게 하는 방법은?
-		  "---",
-		  "",
-		  "$0"
-		],
-		"scope": "md,mdx"
-	  },
-	  "Plain Code block" : {
-		"scope": "md,mdx",
-		"prefix" : ["```"],
-		"description":"Output a Coad block syntax with captions",
-		"body": [
-		  "```",
-		  "$0",
-		  "```"
-		],
-
-	  },
-	  "Code block Caption" : {
-		"scope": "md,mdx",
-		"prefix" : ["``` caption"],
-		"description":"Output a Coad block syntax with captions",
-		"body": [
-		  "``` caption=\"$0\"",
-		  "```"
-		],
-	  },
-	  "Add Caption" : {
-		"scope": "md,mdx",
-		"prefix" : ["caption"],
-		"description":"Output a captions syntax",
-		"body": [
-		  "caption=\"$0\"",
-		],
-	  },
+  "Post Matter": {
+    "prefix": ["---"],
+    "description": "Output a file header with the file name and date",
+    "body": [
+      "---",
+      "title: '$1'",
+      "sub-title:'$2'",
+      "duration: '$3'",
+      "---",
+      "",
+      "export { skillTags } from './contents'",
+      "$0",
+    ],
+    "scope": "md,mdx",
+  },
+  "Plain Code block": {
+    "scope": "md,mdx",
+    "prefix": ["```"],
+    "description": "Output a Coad block syntax with captions",
+    "body": ["```", "$0", "```"],
+  },
+  "Code block Caption": {
+    "scope": "md,mdx",
+    "prefix": ["``` caption"],
+    "description": "Output a Coad block syntax with captions",
+    "body": ["``` caption=\"$0\"", "```"],
+  },
+  "Add Caption": {
+    "scope": "md,mdx",
+    "prefix": ["caption"],
+    "description": "Output a captions syntax",
+    "body": ["caption=\"$0\""],
+  },
+  "Project Contents": {
+    "prefix": ["contents", "PPP"],
+    "description": "Project MDX 에서 사용되는 contents.ts 파일 탬플릿",
+    "body": [
+      "import { MainImageItemContents } from '@contents/components/main-image/types';",
+      "import { SkillTag } from '@/types/front-matter';",
+      "export const skillTags: SkillTag[] = [];",
+      "export const contents: MainImageItemContents[] = []",
+    ],
+    "scope": "typescript",
+  },
 }

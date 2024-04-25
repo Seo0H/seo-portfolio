@@ -1,6 +1,9 @@
 declare module '*.mdx' {
+  import { SkillTag } from './types/front-matter';
+
   const matter: FrontMatter;
-  export { matter };
+  const skillTags: SkillTag[];
+  export { matter, skillTags };
 
   export type FrontMatter = {
     title: string;
@@ -8,7 +11,6 @@ declare module '*.mdx' {
     description: string;
     draft: boolean;
     image: string;
-    skillTag: ('TypeScript' | 'Next.js' | 'React-Query' | 'Styled-Component')[];
     duration: string;
   };
 
