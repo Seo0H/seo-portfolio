@@ -20,52 +20,52 @@ export type SkillTag = keyof typeof SkillTagMap;
 
 // TODO: skill tag 항목별 스킬 분리
 
-interface Skills {
-  language: keyof typeof Language;
-  build: keyof typeof Build;
-  style: keyof typeof Style;
-  stateManagement: keyof typeof StateManagement;
-  deploy: keyof typeof Deploy;
-  database: keyof typeof Database;
-  infra: keyof typeof Infra;
-  ect: keyof typeof ECT;
-}
+// interface Skills {
+//   language: keyof typeof Language;
+//   build: keyof typeof Build;
+//   style: keyof typeof Style;
+//   stateManagement: keyof typeof StateManagement;
+//   deploy: keyof typeof Deploy;
+//   database: keyof typeof Database;
+//   infra: keyof typeof Infra;
+//   ect: keyof typeof ECT;
+// }
 
-enum Language {
-  'TypeScript',
-  'MDX',
-}
+// enum Language {
+//   'TypeScript',
+//   'MDX',
+// }
 
-enum Build {
-  'Next.js',
-  'Vite',
-}
+// enum Build {
+//   'Next.js',
+//   'Vite',
+// }
 
-enum Style {
-  'Styled-Component',
-  'Tailwind',
-}
+// enum Style {
+//   'Styled-Component',
+//   'Tailwind',
+// }
 
-enum StateManagement {
-  'React-Query',
-}
+// enum StateManagement {
+//   'React-Query',
+// }
 
-enum Deploy {
-  'Github Page',
-}
+// enum Deploy {
+//   'Github Page',
+// }
 
-enum Database {
-  'SupaBase',
-}
+// enum Database {
+//   'SupaBase',
+// }
 
-enum ECT {
-  'ContentsLayer',
-}
+// enum ECT {
+//   'ContentsLayer',
+// }
 
-enum Infra {
-  'S3',
-  'CloudFront',
-  'Route 53',
-  'E2C',
-  'Lambda',
-}
+// enum Infra {
+//   'S3',
+//   'CloudFront',
+//   'Route 53',
+//   'E2C',
+//   'Lambda',
+// }
