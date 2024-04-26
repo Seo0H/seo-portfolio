@@ -7,19 +7,15 @@ import puppeteer, { type Browser } from 'puppeteer-core';
 
 import type { Handler } from 'aws-lambda';
 
-// NOTE: PDF 순서대로 idx 정렬되어야 함
-const projectPaths = ['portfolio', 'blog', 'sobisa'].map((el) => `project/${el}`);
-const paths = ['info', ...projectPaths];
-
-const merger = new PDFMerger();
-// TODO: 마이그래이션 @aws-sdk/client-s3
-const S3 = new AWS.S3({
-  signatureVersion: 'v4',
-});
-
 const bucketName = process.env.BUCKET_NAME ?? '';
 
 const handler: Handler = async () => {
+  const merger = new PDFMerger();
+  // TODO: 마이그래이션 @aws-sdk/client-s3
+  const S3 = new AWS.S3({
+    signatureVersion: 'v4',
+  });
+
   console.log(`✅ Start make PDF lambda function`);
 
   let browser: Browser | null = null;
@@ -46,6 +42,12 @@ const handler: Handler = async () => {
     page = await browser.newPage();
 
     console.log(`✅ Make page success`);
+
+    // NOTE: PDF 순서대로 idx 정렬되어야 함
+    const projectPaths = ['portfolio', 'blog', 'sobisa'].map((el) => `project/${el}`);
+    const paths = ['info', ...projectPaths];
+
+    console.log(`🚗 PATHS : ${paths}`);
 
     for (const path of paths) {
       await page?.goto(`https://portfolio.seo0h.me/${path}`, {

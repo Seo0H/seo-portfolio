@@ -5,6 +5,7 @@ import { Outlet, createBrowserRouter, redirect } from 'react-router-dom';
 
 import { Header } from '@/components/header';
 import { GlobalLayout } from '@/components/layout/global';
+import { MainSkeleton } from '@/components/loading';
 import { components } from '@/components/mdx';
 import { OGProvider } from '@/hooks/og';
 
@@ -15,16 +16,16 @@ export const router = createBrowserRouter([
   {
     element: (
       // TODO: FIX HARD CODING
-      <Suspense fallback='...loading'>
-        <OGProvider>
-          <MDXProvider components={components}>
-            <Header />
-            <GlobalLayout>
+      <OGProvider>
+        <MDXProvider components={components}>
+          <Header />
+          <GlobalLayout>
+            <Suspense fallback={<MainSkeleton />}>
               <Outlet />
-            </GlobalLayout>
-          </MDXProvider>
-        </OGProvider>
-      </Suspense>
+            </Suspense>
+          </GlobalLayout>
+        </MDXProvider>
+      </OGProvider>
     ),
     children: [
       { path: '/', loader: () => redirect('/info') },
