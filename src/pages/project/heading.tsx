@@ -1,8 +1,7 @@
 import { useId } from 'react';
 
 import { SkillTag } from '@/components/skill-tag';
-
-import { type ProjectNamespace, projectKeys } from './index';
+import { type ProjectNamespace, projectKeys } from '@/constant/portfolio-page';
 
 import type { FrontMatter, SkillTag as TSkillTag } from '@/types/front-matter';
 

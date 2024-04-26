@@ -3,7 +3,7 @@ import { useId } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Dropdown } from '@/components/common/form/dropdown';
-import { projectKeys } from '@/pages/project';
+import { projectKeys } from '@/constant/portfolio-page';
 import { buttons } from '@/styles/buttons';
 import { cn } from '@/utils/cn';
 

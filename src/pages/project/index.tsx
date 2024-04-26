@@ -1,11 +1,10 @@
 import * as ProjectPosts from '@contents/project/index';
-import type * as ProjectPostsTypes from '@contents/project/index';
 
 import { useParams } from 'react-router-dom';
 
 import animate from '@/styles/animation.module.css';
-import { getKeyFromObject } from '@/types/utils';
 import { cn } from '@/utils/cn';
+import { isPostType } from '@/utils/types';
 
 import { Heading } from './heading';
 
@@ -24,13 +23,3 @@ const ProjectPage = () => {
 };
 
 export default ProjectPage;
-
-export type ProjectNamespace = typeof ProjectPostsTypes;
-export const projectKeys = getKeyFromObject<keyof ProjectNamespace>(ProjectPosts).sort(
-  (aPostsKey, bPostKey) => ProjectPosts[aPostsKey].matter.idx - ProjectPosts[bPostKey].matter.idx,
-);
-
-const isPostType = (id: string | undefined): id is keyof ProjectNamespace => {
-  if (id && id in ProjectPosts) return true;
-  return false;
-};
