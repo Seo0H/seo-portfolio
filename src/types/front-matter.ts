@@ -16,6 +16,14 @@ export enum SkillTagMap {
   'Lambda',
 }
 
+export type FrontMatter = {
+  title: string;
+  subTitle: string;
+  description: string;
+  duration: string;
+  idx: number;
+};
+
 export type SkillTag = keyof typeof SkillTagMap;
 
 // TODO: skill tag 항목별 스킬 분리
