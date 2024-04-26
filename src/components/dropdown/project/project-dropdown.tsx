@@ -25,12 +25,15 @@ export const ProjectDropdown = ({ className }: { className?: string }) => {
         Projects
       </Dropdown.Trigger>
 
-      <Dropdown.List className='left-0 overflow-hidden rounded-b-md shadow-md '>
+      <Dropdown.List className='overflow-hidden rounded-b-md shadow-md '>
         {projectKeys.map((key) => (
           <Dropdown.Item
             key={`${uniqId}-${key}`}
             value={key}
-            className={cn(buttons.default, `inline-block rounded-none bg-white backdrop-blur-md`)}
+            className={cn(
+              buttons.default,
+              `flex items-center justify-center rounded-none bg-white backdrop-blur-md`,
+            )}
             checkedStyle='bg-slate-100 text-gray-600'
           >
             {key.toUpperCase()}

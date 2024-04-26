@@ -12,7 +12,7 @@ export const Item = ({
     dropdown?.triggerOpen && (
       <Radio
         checkedStyle={checkedStyle}
-        labelStyle={cn('cursor-pointer w-full text-center hover:bg-slate-100', className)}
+        labelStyle={cn('cursor-pointer w-full hover:bg-slate-100', className)}
         inputStyle='hidden'
         {...props}
       />
