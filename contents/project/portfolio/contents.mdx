@@ -17,9 +17,10 @@ import { contents } from './contents';
 
 ### Summery | 요약
 
+- 개인 프로젝트
 - 24년 3월 ~ 4월 간 진행한 포트폴리오 사이트 제작 프로젝트
-- `mdx` 를 이용한 포트폴리오를 작성
-- 배포된 웹 포트폴리오를 lambda를 이용해 PDF로 제작
+- `mdx` 를 이용한 포트폴리오를 컨텐츠 작성
+- 배포된 웹 포트폴리오를 `lambda` 와 `S3` 를 이용해 PDF로 변환하여 다운로드 할 수 있도록 구현
 
 ### Personal achievements | 개인 성과
 
@@ -36,24 +37,40 @@ import { contents } from './contents';
 
 #### 요구사항 정의
 
--
+- `web portfolio` 에서 `PDF 다운로드 버튼`을 누르면, PDF 로 된 포트폴리오를 다운로드 받을 수 있어야 합니다.
 
 #### 요구사항 구체화
 
--
+![요구사항 구체화를 위해 각 객체 별 상호작용을 다이어그램으로 정리하였습니다.](/posts/portfolio/web_to_pdf_diagram.png)
 
 #### 구현 방식
+
+- **Lambda Trigger 방식** : Github Action 에서 IAM 인증을 통한 함수 URL 호출 ([해당 코드](https://github.com/Seo0H/seo-portfolio/blob/main/.github/workflows/lambda-pdf.yml))
+
+  - **CD 후 Trigger 호출** : Github Action 에서 사이트가 빌드, 배포 된 후 Lambda 함수 URL 을 호출하도록 workflow script를 구성하였습니다.
+  - **AWS OIDC를 이용한 IAM Role 인증** : Github action 환경에서 aws client를 이용해 Lambda 함수를 호출하기 위해 JWT 기반의 OIDC를 이용한 인증 절차를 적용하였습니다.
+
+- **PDF 생성 위치** : AWS Lambda 함수
+  - **`pupperteer` 를 이용한 브라우저 크롤링** : node.js 환경에서 `pupperteer` 를 이용해 웹사이트를 PDF 형식으로 변환해 저장하도록 하였습니다.
+- **PDF가 저장되는 위치** : AWS S3
+  - Lambda 함수 호출 이후, AWS S3 버킷에 추출된 PDF 가 저장되도록 하였습니다.
 
 ---
 
 ### 2. Open Graph 미리보기 제공
 
+![OG Preview 가 작동하는 모습](/posts/portfolio/4.png)
+
 #### 요구사항 정의
 
--
+- `mdx` 에서 "preview" title 이 있는 링크에 마우스를 호버 하면 해당 링크의 `Open Graph` 정보를 받아와 유저에게 보여줄 수 있어야 합니다.
 
 #### 요구사항 구체화
 
 -
 
 #### 구현 방식
+
+- **`<OGPreviewCard />` 컴포넌트 분리** : MDX A tag 에서 Open Graph Privew 컴포넌트를 분리했습니다.
+- **Open Graph 다중 호출 방지** : `Context API` 로 `OG Provider` 를 구현해 이전에 호출한 URL과 받아온 data를 전역 OG Data 객체에 저장하고, URL이 호출되기 전에 OG Data를 조회해 값이 있으면 캐시된 값을 불러오도록 구현하였습니다.
+- **`<OGPreviewCard />` 위치 보정** : 미리보기 카드가 화면의 좌, 우를 넘어서 보여지면 위치를 이동시켜 오버플로우되지 않도록 보정하였습니다.
