@@ -20,13 +20,15 @@ const client = new S3Client({
   }),
 });
 
-const command = new GetObjectCommand({ Bucket, Key: fileName });
-
 /**
  * @description 만댝 onClick 핸들러가 인자로 넘어올 경우, 파일 다운로드 전에 실행됨
  */
 export const DownloadPdf = ({ className, onClick, ...props }: ComponentProps<'button'>) => {
   const handleDownload = async () => {
+    // NOTE: DownloadPdf 외부에서 GetObjectCommand 객체를 생성 할 경우
+    // s3 객체의 이전 버전 참조하기 때문에 함수 내부에서 생성
+    const command = new GetObjectCommand({ Bucket, Key: fileName });
+
     try {
       const res = await client.send(command);
       const resBody = await res.Body?.transformToByteArray();
