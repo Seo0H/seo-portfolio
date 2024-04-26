@@ -18,11 +18,13 @@ export const contents: MainImageItemContents[] = [
     src: '/posts/portfolio/1.png',
     className: 'row-span-3 col-span-2',
     caption: { heading: 'Project page PC ver' },
+    isPrint: true,
   },
   {
     src: '/posts/portfolio/2.png',
     className: 'row-span-2',
     caption: { heading: 'Project page mobile ver' },
+    isPrint: true,
   },
-  { src: '/posts/portfolio/3.png', caption: { heading: 'Image Modal' } },
+  { src: '/posts/portfolio/3.png', caption: { heading: 'Image Modal' }, isPrint: true },
 ];
