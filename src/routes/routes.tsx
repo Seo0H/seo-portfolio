@@ -9,13 +9,14 @@ import { MainSkeleton } from '@/components/loading';
 import { components } from '@/components/mdx';
 import { OGProvider } from '@/hooks/og';
 
-const InfoPage = lazy(() => import('@/pages/info'));
-const ProjectPage = lazy(() => import('@/pages/project'));
+import { transition } from './utils';
+
+const InfoPage = lazy(() => transition(import('@/pages/info')));
+const ProjectPage = lazy(() => transition(import('@/pages/project')));
 
 export const router = createBrowserRouter([
   {
     element: (
-      // TODO: FIX HARD CODING
       <OGProvider>
         <MDXProvider components={components}>
           <Header />
@@ -29,7 +30,10 @@ export const router = createBrowserRouter([
     ),
     children: [
       { path: '/', loader: () => redirect('/info') },
-      { path: '/info', element: <InfoPage /> },
+      {
+        path: '/info',
+        element: <InfoPage />,
+      },
       { path: '/project/:id', element: <ProjectPage /> },
     ],
   },

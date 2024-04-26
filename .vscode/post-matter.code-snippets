@@ -44,4 +44,9 @@
     ],
     "scope": "typescript",
   },
+  "Animate": {
+    "prefix": "animate",
+    "description": "global animate import",
+    "body": "import animate from '@/styles/animation.module.css';",
+  },
 }

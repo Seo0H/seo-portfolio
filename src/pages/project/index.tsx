@@ -3,7 +3,9 @@ import type * as ProjectPostsTypes from '@contents/project/index';
 
 import { useParams } from 'react-router-dom';
 
+import animate from '@/styles/animation.module.css';
 import { getKeyFromObject } from '@/types/utils';
+import { cn } from '@/utils/cn';
 
 import { Heading } from './heading';
 
@@ -14,7 +16,7 @@ const ProjectPage = () => {
   const { default: ProjectPost, ...mdxProps } = ProjectPosts[id];
 
   return (
-    <div className='flex flex-col gap-1 print:[&_h2]:mt-4'>
+    <div className={cn('fade-in flex flex-col gap-1 print:[&_h2]:mt-4', animate['fade-in'])}>
       <Heading {...mdxProps} id={id} />
       <ProjectPost />
     </div>
@@ -32,10 +34,3 @@ const isPostType = (id: string | undefined): id is keyof ProjectNamespace => {
   if (id && id in ProjectPosts) return true;
   return false;
 };
-function SuspenseSimulator({ suspense = false }: { suspense: boolean }) {
-  if (suspense) {
-    throw new Promise(() => undefined);
-  } else {
-    return null;
-  }
-}
