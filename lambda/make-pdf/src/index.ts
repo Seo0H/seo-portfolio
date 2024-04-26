@@ -7,7 +7,8 @@ import puppeteer, { type Browser } from 'puppeteer-core';
 
 import type { Handler } from 'aws-lambda';
 
-const projectPaths = ['sobisa', 'portfolio', 'blog'].map((el) => `project/${el}`);
+// NOTE: PDF 순서대로 idx 정렬되어야 함
+const projectPaths = ['portfolio', 'blog', 'sobisa'].map((el) => `project/${el}`);
 const paths = ['info', ...projectPaths];
 
 const merger = new PDFMerger();
@@ -46,7 +47,7 @@ const handler: Handler = async () => {
 
     console.log(`✅ Make page success`);
 
-    paths.forEach(async (path) => {
+    for (const path of paths) {
       await page?.goto(`https://portfolio.seo0h.me/${path}`, {
         waitUntil: 'networkidle2',
       });
@@ -59,7 +60,7 @@ const handler: Handler = async () => {
           printBackground: true,
         }),
       );
-    });
+    }
 
     await merger.setMetadata({
       producer: 'react, AWS Lambda, serverless, puppeteer ',
