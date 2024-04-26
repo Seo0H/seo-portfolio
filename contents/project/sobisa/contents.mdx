@@ -35,7 +35,7 @@ export { skillTags } from './contents';
 
 ### 1. 검색 자동 완성 기능 구현
 
-![자동완성 기능 이미지](/posts/contents/240423-214742.png)
+![자동완성 기능 이미지](/posts/sobisa/자동완성_이미지.png)
 
 - **로직 분리** : 자동완성 로직을 커스텀 훅으로 분리했습니다. ([`useAutoComp`](https://github.com/SobiSa-Expense-Hunter/SobiSa/blob/develop/src/hooks/useAutoCmp.ts))
 - **디바운스 적용** : 디바운스를 적용해 유저가 최종적으로 입력한 글자만 API 요청을 하도록 최적화했습니다.
@@ -73,5 +73,5 @@ export { skillTags } from './contents';
 - **localStorage를 이용한 초기 유입 유저 판별**
 - **공통 레이아웃 추출, 내부 컨텐츠 분리** : 주어진 디자인의 반복되는 레이아웃과 내부 내용을 분리헤 반복되는 코드를 제거하였습니다.
 - **동적으로 위치가 변하는 설명 애니메이션**
-  ![](/posts/contents/240423-220253.png)
+  ![](/posts/sobisa/온보딩_오버레이.png)
   검색 바 Z축 위에 겹쳐져서 설명하는 말풍선 애니메이션을 구현하였습니다. 검색 바의 위치를 ref로 계산해 위치하도록 하였습니다.
