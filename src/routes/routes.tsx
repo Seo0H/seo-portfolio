@@ -3,7 +3,6 @@ import { Suspense, lazy } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { Outlet, createBrowserRouter, redirect } from 'react-router-dom';
 
-import { Header } from '@/components/header';
 import { GlobalLayout } from '@/components/layout/global';
 import { MainSkeleton } from '@/components/loading';
 import { components } from '@/components/mdx';
@@ -19,7 +18,6 @@ export const router = createBrowserRouter([
     element: (
       <OGProvider>
         <MDXProvider components={components}>
-          <Header />
           <GlobalLayout>
             <Suspense fallback={<MainSkeleton />}>
               <Outlet />
