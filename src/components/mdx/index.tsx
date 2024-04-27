@@ -49,7 +49,7 @@ export const components = {
     return (
       <div
         className={cn(
-          'mb-2 w-full rounded-xl border border-slate-100 bg-gradient-to-br from-slate-100  px-4 py-2 prose-blockquote:border-none print:break-inside-avoid print:border-none print:from-transparent print:p-0 print:pb-4 [&_p]:my-2 print:[&_ul]:mt-2',
+          'mb-2 w-full rounded-xl border border-slate-100 bg-gradient-to-br from-slate-100 px-4 py-3 prose-blockquote:border-none print:break-inside-avoid print:border-none print:from-transparent print:p-0 print:pb-4 [&_*:last-child]:mb-0 [&_p]:my-2 [&_ul]:m-0 print:[&_ul]:mt-2',
           className,
         )}
       >

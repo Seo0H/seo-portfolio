@@ -11,7 +11,6 @@ const ContentsWrapper = ({ className, ...props }: ComponentProps<'div'>) => (
 
 const TitleWrapper = ({ className, children, ...props }: ComponentProps<'div'>) => (
   <div className={cn('not-prose mx-auto break-keep md:w-full md:*:m-0', className)} {...props}>
-    <hr className='mb-5 hidden print:block' />
     <div className="sticky top-[70px] mb-3 w-fit rounded-lg bg-slate-100 px-3 py-1 text-center font-bold md:w-full print:bg-white print:p-0 print:text-justify print:text-2xl print:[&>*]:before:content-['Skill_:_']">
       {children}
     </div>
