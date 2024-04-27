@@ -21,7 +21,7 @@ export const MainSkeleton = () => {
 
       <div className='my-4 h-10 w-1/3 rounded-md bg-gray-200' />
 
-      {Array.from({ length: 30 }).map((el, idx) => {
+      {Array.from({ length: 30 }).map((_, idx) => {
         let width = Math.random() * 600;
         if (width < 200) width = 200;
 
