@@ -6,7 +6,7 @@ import { LeftLayout, InfoSkillGrid } from '@contents/info/components';
 
 [E-Mail](mailto:seo0h9@gmail.com) | [Blog](https://seo0h.github.io/) | [GitHub](https://github.com/Seo0H)
 
-문제 해결을 위한 학습을 좋아하며 편리한 웹 사용 경험을 사용자들에게 제공하고자 합니다. 학부 시절 수면 안전 IOT 밴드 제작 프로젝트로 총장상을 받게 된 경험으로 개발에 흥미를 느끼게 되었습니다.
+문제 해결을 위한 학습을 좋아하며 편리한 웹 사용 경험을 사용자들에게 제공하고자 합니다. 시각적으로 아름다운 것을 선호하기에 화면에서 눈에 걸리는 것이 없도록 섬세하게 개발합니다. 학부 시절 수면 안전 IOT 밴드 제작 프로젝트로 총장상을 받게 된 경험으로 개발에 흥미를 느끼게 되었습니다.
 
 - 웹 프론트엔드 설계 및 개발
 - 약 210명 누적 사용자 프로젝트 [`Sobisa`](https://sobisa.vercel.app/ 'preview') / 개인 블로그 [`isSeo`](https://blog.seo0h.me/ 'preview') / 개인 포트폴리오 사이트 [`seo-portfolio`](https://portfolio.seo0h.me/ 'preview') 개발 및 운영
@@ -18,7 +18,7 @@ import { LeftLayout, InfoSkillGrid } from '@contents/info/components';
 <InfoSkillGrid>
 
     <LeftLayout.TitleWrapper>
-      `Front-end`
+      Front-end
     </LeftLayout.TitleWrapper>
 
     <LeftLayout.ContentsWrapper>
@@ -49,16 +49,17 @@ import { LeftLayout, InfoSkillGrid } from '@contents/info/components';
 
         >### Next.js
         >[Next js API Route를 사용할 수 있습니다.](https://github.com/SobiSa-Expense-Hunter/SobiSa/blob/develop/src/pages/api/products.ts)
-        >빠른 데이터 패칭을 위해 [`getStaticPaths`, `getStaticProps` 과 같은 Next.js Server Side API를 이용한 Data Fetching을 구현해 본 경험](https://github.com/Seo0H/seo0h.github.io/blob/027e730aa972a65287b172a4deb08aa4b8b73dea/src/pages/index.tsx#L16-L27)이 있습니다. (pages router 환경)
+        >빠른 데이터 패칭을 위해 [`getStaticPaths`, `getStaticProps` 과 같은 Next.js Server Side API*를 이용한 Data Fetching을 구현해 본 경험](https://github.com/Seo0H/seo0h.github.io/blob/027e730aa972a65287b172a4deb08aa4b8b73dea/src/pages/index.tsx#L16-L27)이 있습니다.
+        > <Captions>(* pages router 환경)</Captions>
 
 
-        >### AWS  S3, Cloud Front, Lambda, E2C
+        >### AWS  S3, Cloud Front, Lambda
         >
         > `S3`와 `Cloud Front`를 이용해 정적 사이트를 배포한 경험이 있습니다.
         >
-        > `Lambda`를 이용해 [웹사이트를 PDF로 변환해 다운로드 가능하도록 제작](https://github.com/Seo0H/seo-portfolio/tree/main/lambda/ make-pdf 'preview')한 경험이 있습니다.
-        >
-        > AWS의 `E2C`와 `Docker`를 이용해 간단한 [서버](https://github.com/Seo0H/seo-backend)를 제작해 본 경험이 있습니다.
+        > `Lambda`를 이용해 [웹사이트를 PDF로 변환해 다운로드 가능하도록 제작](https://github.com/Seo0H/seo-portfolio/tree/main/lambda/make-pdf 'preview')한 경험이 있습니다.
+
+
 
         >### Jest
         >로직이 복잡한 코드에 한정해서 테스팅을 도입해 본 경험이 있습니다. 복잡한 로직을 검증함과 더불어 해당 코드가 작동하는 방식을 정리할 수 있었습니다.
@@ -74,8 +75,23 @@ import { LeftLayout, InfoSkillGrid } from '@contents/info/components';
 <div className='h-5 print:hidden' />
 
 <InfoSkillGrid>
+  <LeftLayout.TitleWrapper>Back-end</LeftLayout.TitleWrapper>
+  <LeftLayout.ContentsWrapper>
+    
+    > **AWS E2C, Docker** 
+    >   - AWS의 `E2C`를 이용해 간단한 [API 서버](https://github.com/Seo0H/seo-backend)를 제작해 본 경험이 있습니다. 
+    >   - 해당 서버를 Dockerfile을 이용해 Github Action 환경에서 E2C로 자동화된 배포가 가능하도록 하였습니다.
+
+    > **SQL** : 간단한 SQL 문법을 이용해 데이터베이스의 CRUD를 이용할 수 있습니다. 이를 바탕으로 프로덕트에 Subabase를 적용해 본 경험이 있습니다.
+
+  </LeftLayout.ContentsWrapper>
+</InfoSkillGrid>
+
+<div className='h-5 print:hidden' />
+
+<InfoSkillGrid>
     <LeftLayout.TitleWrapper>
-        `문서화 / 협업`
+        문서화 / 협업
     </LeftLayout.TitleWrapper>
 
     <LeftLayout.ContentsWrapper>
