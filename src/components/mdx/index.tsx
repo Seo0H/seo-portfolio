@@ -24,7 +24,12 @@ export const components = {
   },
   a: A,
   Captions(props) {
-    return <div className='font-light *:text-sm [&_*]:text-gray-500 [&_ul]:m-0' {...props} />;
+    return (
+      <div
+        className='inline-block text-sm font-light  text-gray-500 [&_*]:text-gray-500 [&_ul]:m-0'
+        {...props}
+      />
+    );
   },
   img({ className, alt, ...props }) {
     return (
