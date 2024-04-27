@@ -28,7 +28,7 @@ export const MovePage = () => {
   };
 
   return (
-    <div className='absolute right-0  flex justify-end'>
+    <div className='absolute right-0  flex justify-end print:hidden'>
       <div className='fixed bottom-0 z-10 mb-8 flex rounded-md border-2 border-slate-200 bg-white shadow-md'>
         <button
           name='left'
