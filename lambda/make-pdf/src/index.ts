@@ -31,6 +31,7 @@ const handler: Handler = async () => {
         '--disable-setuid-sandbox',
         '--disable-dev-shm-usage',
         '--single-process',
+        '--font-render-hinting=none',
       ],
       defaultViewport: chromium.defaultViewport,
       executablePath: process.env.AWS_EXECUTION_ENV
@@ -40,6 +41,9 @@ const handler: Handler = async () => {
     });
 
     page = await browser.newPage();
+    await page.setUserAgent(
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+    );
 
     console.log(`✅ Make page success`);
 
@@ -51,14 +55,14 @@ const handler: Handler = async () => {
 
     for (const path of paths) {
       await page?.goto(`https://portfolio.seo0h.me/${path}`, {
-        waitUntil: 'networkidle2',
+        waitUntil: 'networkidle0',
       });
 
       await page.waitForSelector('h1', {
         visible: true,
       });
 
-      await page?.evaluateHandle('document.fonts.ready');
+      await page.waitForFunction('document.fonts.ready');
 
       await merger.add(
         await page?.pdf({
