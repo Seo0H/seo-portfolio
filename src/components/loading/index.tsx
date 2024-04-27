@@ -14,18 +14,25 @@ export const MainSkeleton = () => {
 
   return (
     <div className={cn('h-full w-full animate-pulse', animate['fade-in'])} ref={ref}>
-      <div className='mb-1 h-7 w-1/3 rounded-md bg-gray-200' />
-      <div className='mb-10 h-12 w-2/3 rounded-md bg-gray-200' />
-      <div className='mb-5 flex gap-2'>
-        <div className='size-96 rounded-md bg-gray-200' />
-        <div className='size-96 rounded-md bg-gray-200' />
-        <div className='size-96 rounded-md bg-gray-200' />
-      </div>
+      <div className='mb-1 h-7 w-1/4 rounded-md bg-gray-200' />
+      <div className=' h-12 w-2/4 rounded-md bg-gray-200' />
 
-      <div className='mb-1 h-8 w-full rounded-md bg-gray-200' />
-      <div className='mb-1 h-8 w-full rounded-md bg-gray-200' />
-      <div className='mb-1 h-8 w-full rounded-md bg-gray-200' />
-      <div className='mb-1 h-8 w-full rounded-md bg-gray-200' />
+      <div className='my-10 min-h-[30vh] w-full rounded-md bg-gray-200' />
+
+      <div className='my-4 h-10 w-1/3 rounded-md bg-gray-200' />
+
+      {Array.from({ length: 30 }).map((el, idx) => {
+        let width = Math.random() * 600;
+        if (width < 200) width = 200;
+
+        return (
+          <div
+            key={`skeleton-${idx}`}
+            className='mb-1 mr-3 mt-2 inline-block h-[1rem] rounded-md bg-gray-200'
+            style={{ width: `${width}px` }}
+          />
+        );
+      })}
     </div>
   );
 };
