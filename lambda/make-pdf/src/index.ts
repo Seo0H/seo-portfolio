@@ -54,6 +54,10 @@ const handler: Handler = async () => {
         waitUntil: 'networkidle2',
       });
 
+      await page.waitForSelector('h1', {
+        visible: true,
+      });
+
       await page?.evaluateHandle('document.fonts.ready');
 
       await merger.add(

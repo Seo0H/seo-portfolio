@@ -3,6 +3,12 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 
 const headerHeight = '60px';
 
+const disabledCss = {
+  'blockquote p:first-of-type::before': false,
+  'blockquote p:last-of-type::after': false,
+  blockquote: false,
+};
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'selector',
@@ -28,6 +34,13 @@ export default {
       },
       spacing: {
         header: headerHeight,
+      },
+      typography: {
+        DEFAULT: { css: disabledCss },
+        sm: { css: disabledCss },
+        lg: { css: disabledCss },
+        xl: { css: disabledCss },
+        '2xl': { css: disabledCss },
       },
     },
   },

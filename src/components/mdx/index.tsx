@@ -45,7 +45,12 @@ export const components = {
   Block({ className, ...props }) {
     return <RoundedBlock className={cn('0 px-10 [&>*:first-child]:mt-2', className)} {...props} />;
   },
-  hr({ className, ...props }) {
-    return <hr className={cn('print:hidden', className)} {...props} />;
+  blockquote({ className, ...props }) {
+    return (
+      <div
+        className='mb-2 w-full rounded-xl border border-slate-100 bg-gradient-to-br from-slate-100  px-4 py-2 prose-blockquote:border-none print:break-inside-avoid print:border-none print:from-transparent print:p-0 print:pb-4 [&_p]:my-2 print:[&_ul]:mt-2'
+        {...props}
+      />
+    );
   },
 } satisfies MDXComponents;
