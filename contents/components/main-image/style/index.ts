@@ -1,1 +1,1 @@
-export { toggleResultLayout } from './toggle-result';
+export * from './toggle-result';
