@@ -28,7 +28,7 @@ export const DesktopImageGallery = ({
               className={cn(
                 `not-prose absolute left-0 top-0
                     h-full w-full object-cover object-top
-                    group-hover:mix-blend-multiply `,
+                    group-hover:mix-blend-multiply dark:mix-blend-multiply`,
                 className,
               )}
               {...props}

@@ -3,9 +3,9 @@ import { Header } from '../header';
 
 export const GlobalLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
+    <div className='bg-white dark:bg-slate-900'>
       <Header />
-      <div className='mx-auto min-h-[100vh] max-w-global-inner-width bg-white p-header px-4 md:px-10 print:p-0'>
+      <div className='mx-auto min-h-[100vh] max-w-global-inner-width p-header px-4 md:px-10 print:p-0'>
         <div className='pt-2 print:pt-0'>
           <div className='relative'>
             <Buttons.MovePage />
@@ -14,6 +14,6 @@ export const GlobalLayout = ({ children }: { children: React.ReactNode }) => {
           {children}
         </div>
       </div>
-    </>
+    </div>
   );
 };

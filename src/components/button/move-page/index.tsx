@@ -29,11 +29,11 @@ export const MovePage = () => {
 
   return (
     <div className='absolute right-0  flex justify-end print:hidden'>
-      <div className='fixed bottom-0 z-10 mb-8 flex rounded-md border-2 border-slate-200 bg-white shadow-md'>
+      <div className='fixed bottom-0 z-10 mb-8 flex rounded-md border-2 border-slate-200 bg-white shadow-md dark:border-slate-700 dark:bg-slate-800'>
         <button
           name='left'
           onClick={handelClick}
-          className={cn(buttons.default, 'rounded-none border-r-2')}
+          className={cn(buttons.default, 'rounded-none border-r-2 dark:border-slate-700 ')}
         >
           <Icon.Arrow.Left className='size-7' />
         </button>

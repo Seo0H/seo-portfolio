@@ -8,7 +8,14 @@ import { cn } from '@/utils/cn';
 
 import { ToggleResult } from '../modal-img';
 
+import { BlockQuote } from './blockquote';
 import type { MDXComponents } from 'mdx/types';
+
+const wrapper = /*tw*/ {
+  darkMode:
+    'dark:prose-headings:text-slate-300 dark:prose-strong:text-slate-300 dark:prose-invert dark:prose-p:text-slate-400 dark:prose-a:text-slate-400 dark:prose-a:decoration-slate-600 dark:prose-code:text-slate-300 dark:prose-ul:text-slate-400',
+  print: 'print:prose-h3:m-[0.3rem_0] print:prose-li:my-1 print:prose-hr:my-6',
+};
 
 export const components = {
   wrapper({ components, ...props }) {
@@ -16,8 +23,10 @@ export const components = {
       <article
         className={`prose-m lg:prose-l print:prose-h2:-[0.3rem_0] prose
                     max-w-[inherit]
-                    dark:prose-invert prose-p:break-keep prose-a:font-normal prose-a:decoration-slate-300 prose-ul:mb-1 prose-ul:mt-4 prose-ul:pl-4 prose-li:break-keep prose-hr:my-10 md:prose-ul:pl-6
-                    print:prose-h3:m-[0.3rem_0] print:prose-li:my-1 print:prose-hr:my-6 [&_*]:print:leading-[160%]`}
+                    prose-p:break-keep prose-a:font-normal prose-a:decoration-slate-300 prose-ul:mb-1 prose-ul:mt-4 prose-ul:pl-4 prose-li:break-keep prose-hr:my-10 md:prose-ul:pl-6
+                    ${wrapper.darkMode}
+                    ${wrapper.print}
+                    [&_*]:print:leading-[160%] `}
         {...props}
       />
     );
@@ -25,8 +34,8 @@ export const components = {
   a: A,
   Captions(props) {
     return (
-      <div
-        className='inline-block text-sm font-light  text-gray-500 [&_*]:text-gray-500 [&_ul]:m-0'
+      <span
+        className='text-sm font-light text-slate-400 [&_*]:text-slate-400 [&_ul]:m-0'
         {...props}
       />
     );
@@ -34,32 +43,25 @@ export const components = {
   img({ className, alt, ...props }) {
     return (
       <div className='flex flex-col items-start justify-center gap-1'>
-        <ToggleResult clickResult={<ImageModal src={props.src} />} className='cursor-pointer '>
+        <ToggleResult
+          clickResult={<ImageModal src={props.src} />}
+          className='cursor-pointer rounded-xl border border-slate-200 shadow-slate-100 transition-all hover:shadow-lg dark:border-slate-700 dark:bg-gradient-to-b dark:from-slate-200 dark:to-slate-500 dark:hover:bg-gradient-to-b dark:hover:to-slate-50 dark:hover:mix-blend-normal'
+        >
           <img
             className={cn(
-              'not-prose max-h-[300px] rounded-xl border border-gray-200 shadow-gray-100 hover:shadow-lg print:max-h-[7cm] print:object-contain',
+              `not-prose max-h-[300px] 
+                dark:mix-blend-multiply print:max-h-[7cm] print:object-contain`,
               className,
             )}
             {...props}
           />
         </ToggleResult>
-        <div className='text-[12px] text-gray-500 print:max-w-[15cm]'>{alt}</div>
+        <div className='text-[12px] text-slate-500 print:max-w-[15cm]'>{alt}</div>
       </div>
     );
   },
   Block({ className, ...props }) {
     return <RoundedBlock className={cn('0 px-10 [&>*:first-child]:mt-2', className)} {...props} />;
   },
-  blockquote({ className, children }) {
-    return (
-      <div
-        className={cn(
-          'mb-2 w-full rounded-xl border border-slate-100 bg-gradient-to-br from-slate-100 px-4 py-3 prose-blockquote:border-none print:break-inside-avoid print:border-none print:from-transparent print:p-0 print:pb-4 [&_*:last-child]:mb-0 [&_p]:my-2 [&_ul]:m-0 print:[&_ul]:mt-2',
-          className,
-        )}
-      >
-        {children}
-      </div>
-    );
-  },
+  blockquote: BlockQuote,
 } satisfies MDXComponents;

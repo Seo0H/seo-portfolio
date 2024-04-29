@@ -72,7 +72,7 @@ export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
                 key={`${uniqId}-image-gallery-${idx}`}
                 className={cn(
                   style.toggleResultLayout,
-                  'max-h-[50vh] w-[100vw] bg-slate-100',
+                  'max-h-[50vh] w-[100vw] bg-slate-100 dark:bg-slate-500',
                   className,
                 )}
                 clickResult={<ImageModal {...{ caption }} {...props} />}
@@ -82,7 +82,7 @@ export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
                   {caption?.heading}
                 </span>
                 <img
-                  className={`not-prose h-full w-full object-scale-down group-hover:mix-blend-multiply `}
+                  className={`not-prose h-full w-full object-scale-down group-hover:mix-blend-multiply dark:mix-blend-multiply`}
                   {...props}
                 />
               </ToggleResult>
