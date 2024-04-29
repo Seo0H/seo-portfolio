@@ -3,11 +3,10 @@ import { ComponentProps } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Logo } from '@/asset/logo/isSeo';
+import { Buttons } from '@/components/button/index';
 import { ProjectDropdown } from '@/components/dropdown/project';
 import { buttons } from '@/styles/buttons';
 import { cn } from '@/utils/cn';
-
-import { DownloadPdf } from '../download-pdf';
 
 export const Header = ({ className }: Pick<ComponentProps<'div'>, 'className'>) => {
   const navigator = useNavigate();
@@ -26,7 +25,7 @@ export const Header = ({ className }: Pick<ComponentProps<'div'>, 'className'>) 
           <Link to='/info' className={cn(buttons.default, 'hidden md:block')}>
             INFO
           </Link>
-          <DownloadPdf className={cn(buttons.default)}>PDF 저장</DownloadPdf>
+          <Buttons.DownloadPdf className={cn(buttons.default)}>PDF 저장</Buttons.DownloadPdf>
 
           <ProjectDropdown />
         </div>
