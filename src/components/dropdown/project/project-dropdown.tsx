@@ -20,7 +20,7 @@ export const ProjectDropdown = ({ className }: { className?: string }) => {
     >
       <Dropdown.Trigger
         className={cn(buttons.default, 'px-5')}
-        openStyle='shadow-md w-full rounded-b-none bg-white'
+        openStyle='shadow-md w-full rounded-b-none bg-white dark:bg-slate-800'
       >
         Projects
       </Dropdown.Trigger>
@@ -32,7 +32,7 @@ export const ProjectDropdown = ({ className }: { className?: string }) => {
             value={key}
             className={cn(
               buttons.default,
-              `flex items-center justify-center rounded-none bg-white backdrop-blur-md`,
+              `flex items-center justify-center rounded-none bg-white backdrop-blur-md dark:bg-slate-800 dark:hover:bg-slate-900`,
             )}
             checkedStyle='bg-slate-100 text-gray-600'
           >

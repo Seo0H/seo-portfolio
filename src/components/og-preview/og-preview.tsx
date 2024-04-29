@@ -47,7 +47,8 @@ export const OGPreviewCard = ({
       ref={cardRef}
       className={cn(
         `absolute z-10 m-0 flex w-[20rem] flex-col overflow-hidden
-                  rounded-md border-[1px] border-solid border-slate-300 bg-slate-50 shadow-md`,
+          rounded-md border-[1px] border-solid border-slate-300 bg-slate-50 shadow-md
+          dark:border-slate-600 dark:bg-slate-900`,
         className,
       )}
       {...props}

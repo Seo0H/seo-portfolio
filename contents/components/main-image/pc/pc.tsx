@@ -21,14 +21,12 @@ export const DesktopImageGallery = ({
             className={cn(style.toggleResultLayout, 'min-h-[208px]', className)}
             clickResult={<ImageModal {...{ caption }} {...props} />}
           >
-            <span className='z-10 hidden px-5 pb-3 font-semibold leading-snug text-white group-hover:block'>
-              {caption?.heading}
-            </span>
+            <span className={style.caption}>{caption?.heading}</span>
             <img
               className={cn(
                 `not-prose absolute left-0 top-0
                     h-full w-full object-cover object-top
-                    group-hover:mix-blend-multiply `,
+                    group-hover:mix-blend-multiply dark:mix-blend-multiply`,
                 className,
               )}
               {...props}

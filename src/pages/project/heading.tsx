@@ -19,15 +19,17 @@ export const Heading = ({
 
   return (
     <div className='mb-4 flex flex-col gap-2 print:block'>
-      <h1 className='text-base font-semibold text-peacock-800'>{projectSubTitle}</h1>
-      <span className='text-3xl font-extrabold text-black'>{matter.title}</span>
+      <h1 className='text-base font-semibold text-peacock-800 dark:text-blue-500'>
+        {projectSubTitle}
+      </h1>
+      <span className='text-3xl font-bold text-black dark:text-slate-100'>{matter.title}</span>
 
       <div className='mt-4 flex flex-wrap gap-[3px_5px] whitespace-nowrap font-light  text-gray-500'>
         {skillTags.map((skill) => (
           <SkillTag
             key={`${uniqId}-${skill}`}
             skill={skill}
-            className='bg-slate-200 px-2 py-1 text-sm font-medium text-gray-500'
+            className='bg-slate-200 px-2 py-1 text-sm font-medium text-gray-500 dark:bg-slate-700 dark:text-slate-400'
           />
         ))}
       </div>

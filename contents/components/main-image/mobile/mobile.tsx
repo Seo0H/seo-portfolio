@@ -55,10 +55,10 @@ export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
     <div className='md:hidden print:hidden'>
       <div className='relative h-[50vh] w-full overflow-hidden' ref={outerContainerRef}>
         <div className='absolute flex h-full w-full cursor-pointer items-center justify-between'>
-          <button onClick={onPrev} className='z-10'>
+          <button onClick={onPrev} className='z-[1]'>
             <Icon.Arrow.Left className={cn(style.icon, activeIdx === 0 && `opacity-0`)} />
           </button>
-          <button onClick={onNext} className='z-10'>
+          <button onClick={onNext} className='z-[1]'>
             <Icon.Arrow.Right
               className={cn(style.icon, activeIdx === contents.length - 1 && `opacity-0`)}
             />
@@ -70,19 +70,13 @@ export function MobileImageGallery({ contents, uniqId }: ImageGalleryProps) {
             return (
               <ToggleResult
                 key={`${uniqId}-image-gallery-${idx}`}
-                className={cn(
-                  style.toggleResultLayout,
-                  'max-h-[50vh] w-[100vw] bg-slate-100',
-                  className,
-                )}
+                className={cn(style.toggleResultLayout, 'max-h-[50vh] w-[100vw]', className)}
                 clickResult={<ImageModal {...{ caption }} {...props} />}
                 style={{ width: `${innerWidth}px` }}
               >
-                <span className='absolute z-10 hidden px-5 pb-3 font-semibold leading-snug text-white group-hover:block'>
-                  {caption?.heading}
-                </span>
+                <span className={style.caption}>{caption?.heading}</span>
                 <img
-                  className={`not-prose h-full w-full object-scale-down group-hover:mix-blend-multiply `}
+                  className={`not-prose h-full w-full object-scale-down group-hover:mix-blend-multiply dark:mix-blend-multiply`}
                   {...props}
                 />
               </ToggleResult>
