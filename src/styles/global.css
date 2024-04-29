@@ -28,3 +28,11 @@ body,
     margin: 1cm;
   }
 }
+
+body::-webkit-scrollbar {
+  @apply w-4 bg-transparent dark:bg-slate-900;
+}
+
+body::-webkit-scrollbar-thumb {
+  @apply rounded-full border-4 border-solid border-transparent bg-slate-300 bg-clip-padding dark:bg-slate-700;
+}
