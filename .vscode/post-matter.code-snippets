@@ -8,6 +8,7 @@
       "sub-title:'$2'",
       "duration: '$3'",
       "idx: '$4'",
+      "type: ${5|team,alone|} ",
       "---",
       "",
       "export { skillTags } from './contents'",
@@ -15,6 +16,7 @@
     ],
     "scope": "md,mdx",
   },
+
   "Plain Code block": {
     "scope": "md,mdx",
     "prefix": ["```"],
