@@ -7,7 +7,7 @@ import { GlobalLayout } from '@/components/layout/global';
 import { MainSkeleton } from '@/components/loading';
 import { components } from '@/components/mdx';
 import { ThemeProvider } from '@/context/theme';
-import { OGProvider } from '@/hooks/og';
+import { OGProvider } from '@/context/og';
 
 import { transition } from './utils';
 

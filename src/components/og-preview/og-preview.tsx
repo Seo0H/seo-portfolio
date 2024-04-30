@@ -1,7 +1,7 @@
 import { ComponentProps, useLayoutEffect, useRef } from 'react';
 
 import { ogCardState } from '@/components/og-preview/conditional-contents';
-import { useOGContext } from '@/hooks/og';
+import { useOGContext } from '@/context/og';
 import { cn } from '@/utils/cn';
 
 export const OGPreviewCard = ({

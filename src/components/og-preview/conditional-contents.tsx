@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 import { Icon } from '@/asset';
 
-import type { ErrorOGState, OGStateData, SuccessOGState } from '@/hooks/og';
+import type { ErrorOGState, OGStateData, SuccessOGState } from '@/context/og';
 
 export const ogCardState: Record<OGStateData['state'], (props: OGStateData) => ReactNode> = {
   loading: () => (
