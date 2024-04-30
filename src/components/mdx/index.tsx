@@ -4,9 +4,8 @@ import { ImageModal } from '@contents/components/main-image/img-modal';
 
 import { RoundedBlock } from '@/components/common/block/inext';
 import { A } from '@/components/mdx/a/a';
+import { ToggleResult } from '@/components/modal/img';
 import { cn } from '@/utils/cn';
-
-import { ToggleResult } from '../modal-img';
 
 import { BlockQuote } from './blockquote';
 import type { MDXComponents } from 'mdx/types';
