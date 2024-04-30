@@ -17,7 +17,7 @@ export const PCHeader = ({ className }: { className?: string }) => {
       <Dropdown className={cn('rounded-md outline-gray-100')} options={{ hover: true }}>
         <Dropdown.Trigger
           className={cn(buttons.default)}
-          openStyle='w-full bg-white dark:bg-slate-800 outline outline-gray-200'
+          openStyle='w-full bg-white dark:bg-slate-800 outline outline-gray-200 dark:outline-slate-700'
         >
           Projects
         </Dropdown.Trigger>

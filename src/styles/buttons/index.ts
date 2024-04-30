@@ -3,5 +3,5 @@ export const buttons = /*tw*/ {
             hover:text-blue-500
             dark:text-gray-400 dark:hover:text-blue-400 dark:hover:bg-transparent`,
   toggleBg: `absolute right-0 rounded-md bg-white shadow-md outline outline-gray-200
-            dark:bg-slate-800 dark:outline-slate-600`,
+            dark:bg-slate-800 dark:outline-slate-700`,
 };

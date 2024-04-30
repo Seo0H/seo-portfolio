@@ -28,7 +28,8 @@ export const ProjectMenu = ({
           className={cn(
             buttons.default,
             `flex w-full cursor-pointer justify-between px-0 py-3 font-medium 
-            hover:bg-white hover:text-blue-500 dark:bg-transparent
+            hover:bg-white hover:text-blue-500
+            dark:bg-transparent 
             ${id === infoKey && 'text-blue-500'}`,
           )}
         >
