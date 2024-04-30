@@ -4,7 +4,7 @@ import { ImageModal } from '@contents/components/main-image/img-modal';
 
 import { Icon } from '@/asset';
 import { Indicator } from '@/components/indicator';
-import { ToggleResult } from '@/components/modal-img';
+import { ToggleResult } from '@/components/modal/img';
 import { useHorizonSlider } from '@/hooks/use-horizon-slider';
 import { cn } from '@/utils/cn';
 

@@ -6,7 +6,8 @@ import { Outlet, createBrowserRouter, redirect } from 'react-router-dom';
 import { GlobalLayout } from '@/components/layout/global';
 import { MainSkeleton } from '@/components/loading';
 import { components } from '@/components/mdx';
-import { OGProvider } from '@/hooks/og';
+import { ThemeProvider } from '@/context/theme';
+import { OGProvider } from '@/context/og';
 
 import { transition } from './utils';
 
@@ -17,13 +18,15 @@ export const router = createBrowserRouter([
   {
     element: (
       <OGProvider>
-        <MDXProvider components={components}>
-          <GlobalLayout>
-            <Suspense fallback={<MainSkeleton />}>
-              <Outlet />
-            </Suspense>
-          </GlobalLayout>
-        </MDXProvider>
+        <ThemeProvider>
+          <MDXProvider components={components}>
+            <GlobalLayout>
+              <Suspense fallback={<MainSkeleton />}>
+                <Outlet />
+              </Suspense>
+            </GlobalLayout>
+          </MDXProvider>
+        </ThemeProvider>
       </OGProvider>
     ),
     children: [

@@ -1,6 +1,6 @@
 import { ImageModal } from '@contents/components/main-image/img-modal';
 
-import { ToggleResult } from '@/components/modal-img';
+import { ToggleResult } from '@/components/modal/img';
 import { cn } from '@/utils/cn';
 
 import * as style from '../style';

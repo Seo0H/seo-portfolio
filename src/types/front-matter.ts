@@ -22,6 +22,7 @@ export type FrontMatter = {
   description: string;
   duration: string;
   idx: number;
+  type: 'team' | 'alone';
 };
 
 export type SkillTag = keyof typeof SkillTagMap;

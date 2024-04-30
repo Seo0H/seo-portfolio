@@ -4,4 +4,6 @@ enum THEME {
   DARK = 'dark',
 }
 
+export type ThemeValues = `${Exclude<THEME, 'theme'>}`;
+
 export const storageData = { THEME };

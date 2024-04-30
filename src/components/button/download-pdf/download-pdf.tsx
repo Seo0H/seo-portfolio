@@ -3,6 +3,7 @@ import type { ComponentProps } from 'react';
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { fromCognitoIdentityPool } from '@aws-sdk/credential-providers';
 
+import { Icon } from '@/asset';
 import { callAll } from '@/utils/call-all-handlers';
 import { cn } from '@/utils/cn';
 import { saveFile } from '@/utils/save-file';
@@ -42,5 +43,9 @@ export const DownloadPdf = ({ className, onClick, ...props }: ComponentProps<'bu
     }
   };
 
-  return <button className={cn(className)} onClick={callAll(onClick, handleDownload)} {...props} />;
+  return (
+    <button className={cn(className)} onClick={callAll(onClick, handleDownload)} {...props}>
+      <Icon.Download />
+    </button>
+  );
 };

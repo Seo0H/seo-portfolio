@@ -7,12 +7,12 @@ export const Item = ({
   checkedStyle,
   ...props
 }: Omit<RadioProps, 'labelStyle' | 'inputStyle'> & { className?: string }) => {
-  const dropdown = useDropdownContext();
+  const { triggerOpen } = useDropdownContext();
   return (
-    dropdown?.triggerOpen && (
+    triggerOpen && (
       <Radio
         checkedStyle={checkedStyle}
-        labelStyle={cn('cursor-pointer w-full hover:bg-slate-100', className)}
+        labelStyle={cn('cursor-pointer w-full', className)}
         inputStyle='hidden'
         {...props}
       />
