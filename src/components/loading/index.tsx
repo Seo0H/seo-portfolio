@@ -25,7 +25,9 @@ export const MainSkeleton = () => {
 
       {Array.from({ length: 30 }).map((_, idx) => {
         let width = Math.random() * 600;
+
         if (width < 200) width = 200;
+        if (width > window.innerWidth) width = window.innerWidth;
 
         return (
           <div
