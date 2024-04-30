@@ -10,10 +10,10 @@ export const EllipsisModal = ({
   contents,
 }: {
   onClose: () => void;
-  contents: ReactNode[];
+  contents: ReactNode;
 }) => {
   return (
-    <ModalBG>
+    <ModalBG onClick={onClose}>
       <div className='fixed right-4 top-4 w-full max-w-xs rounded-lg bg-white p-6 font-semibold text-slate-900 dark:bg-slate-800'>
         <button
           className={cn(
@@ -25,11 +25,7 @@ export const EllipsisModal = ({
           <Icon.X />
         </button>
 
-        <>
-          {contents.map((el) => {
-            return el;
-          })}
-        </>
+        {contents}
       </div>
     </ModalBG>
   );

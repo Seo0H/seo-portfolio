@@ -9,7 +9,7 @@ export const EllipsisMenu = ({
   className,
   menu,
   ...props
-}: Omit<ComponentProps<'button'>, 'children' | 'onClick'> & { menu: ReactNode[] }) => {
+}: Omit<ComponentProps<'button'>, 'children' | 'onClick'> & { menu: ReactNode }) => {
   const [isShown, setShown] = useState(false);
 
   const handelToggle = () => {
