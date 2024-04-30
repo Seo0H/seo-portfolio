@@ -9,12 +9,14 @@ export const Trigger = ({
   openStyle,
   ...props
 }: ComponentProps<'div'> & { openStyle?: string }) => {
-  const dropdown = useDropdownContext();
+  const { handleTrigger, handleOpen, handleClose, triggerOpen, options } = useDropdownContext();
 
   return (
     <div
-      onClick={dropdown?.handleTrigger}
-      className={cn(`w-full cursor-pointer`, className, `${dropdown?.triggerOpen && openStyle}`)}
+      onClick={handleTrigger}
+      onMouseEnter={options?.hover ? handleOpen : undefined}
+      onMouseLeave={options?.hover ? handleClose : undefined}
+      className={cn(`w-full cursor-pointer`, className, `${triggerOpen && openStyle}`)}
       {...props}
     >
       {children}
