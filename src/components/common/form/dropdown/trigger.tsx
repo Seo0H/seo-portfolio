@@ -13,7 +13,7 @@ export const Trigger = ({
 
   return (
     <div
-      onClick={handleTrigger}
+      // onClick={handleTrigger}
       onMouseEnter={options?.hover ? handleOpen : undefined}
       onMouseLeave={options?.hover ? handleClose : undefined}
       className={cn(`w-full cursor-pointer`, className, `${triggerOpen && openStyle}`)}

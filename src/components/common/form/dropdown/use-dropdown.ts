@@ -13,7 +13,7 @@ export const useDropdown = ({ onChange }: Pick<DropDownProps, 'onChange'>) => {
   };
 
   const handleOpen = debounce(() => setTrigger(true));
-  const handleClose = debounce(() => setTrigger(false), 1000);
+  const handleClose = debounce(() => setTrigger(false), 100);
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
     setTrigger(false);
