@@ -4,4 +4,6 @@ enum THEME {
   DARK = 'dark',
 }
 
+export type ThemeValues = `${THEME}`;
+
 export const storageData = { THEME };
