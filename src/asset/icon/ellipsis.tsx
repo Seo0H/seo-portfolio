@@ -11,6 +11,7 @@ const Vertical = ({ className, ...props }: ComponentProps<'svg'>) => {
       strokeWidth={1.5}
       stroke='currentColor'
       className={cn('h-6 w-6', className)}
+      {...props}
     >
       <path
         strokeLinecap='round'

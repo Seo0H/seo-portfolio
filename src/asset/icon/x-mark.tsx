@@ -11,6 +11,7 @@ export const X = ({ className, ...props }: ComponentProps<'svg'>) => {
       strokeWidth={1.5}
       stroke='currentColor'
       className={cn('h-6 w-6', className)}
+      {...props}
     >
       <path strokeLinecap='round' strokeLinejoin='round' d='M6 18 18 6M6 6l12 12' />
     </svg>

@@ -9,7 +9,7 @@ export const Trigger = ({
   openStyle,
   ...props
 }: ComponentProps<'div'> & { openStyle?: string }) => {
-  const { handleTrigger, handleOpen, handleClose, triggerOpen, options } = useDropdownContext();
+  const { handleOpen, handleClose, triggerOpen, options } = useDropdownContext();
 
   return (
     <div
