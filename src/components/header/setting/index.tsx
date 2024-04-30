@@ -34,14 +34,14 @@ export const GlobalSettingMenus = () =>
   SettingContents.map((content) => (
     <div
       key={`${content.visible}-setting-menu`}
-      className='flex w-full flex-row items-center justify-between font-light text-slate-500 dark:text-slate-400'
+      className='flex w-full flex-row items-center justify-between font-normal text-slate-500 dark:text-slate-400'
     >
       {content.visible}
 
       <content.button
         className={cn(
           buttons.default,
-          'dark:bg-700 border border-slate-100 bg-slate-100 stroke-[2px] px-5 text-slate-500 dark:border-slate-700 dark:bg-slate-600 dark:text-slate-400 dark:hover:bg-slate-700',
+          'dark:bg-700 border border-slate-100 bg-slate-100 stroke-[2px] px-5 text-slate-500 dark:border-slate-700 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-700',
         )}
       />
     </div>

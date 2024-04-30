@@ -11,7 +11,7 @@ export const PCHeader = ({ className }: { className?: string }) => {
   return (
     <div className={cn(className)}>
       <Link to='/info' className={cn(buttons.default, 'hidden sm:block')}>
-        INFO
+        Info
       </Link>
 
       <Dropdown className={cn('rounded-md outline-gray-100')} options={{ hover: true }}>

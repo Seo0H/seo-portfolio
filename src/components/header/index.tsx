@@ -14,9 +14,9 @@ export const Header = ({ className }: Pick<ComponentProps<'div'>, 'className'>) 
   return (
     <div className={cn('fixed z-10 h-header w-full print:hidden', className)}>
       <div
-        className={`mx-auto flex h-full w-full max-w-global-inner-width items-center justify-between gap-2 border-b-[1px] border-solid
+        className={`mx-auto flex h-full w-full max-w-global-inner-width items-center justify-between gap-2 border-b-[1px] border-solid border-slate-900/10
                   bg-white bg-opacity-[0.8] px-4 bg-blend-overlay backdrop-blur-sm md:px-10
-                  dark:border-slate-600 dark:bg-slate-900 dark:bg-opacity-[0.7]`}
+                  dark:border-slate-300/10 dark:bg-slate-900 dark:bg-opacity-[0.7]`}
       >
         <Logo
           width='min(20%, 100px)'
