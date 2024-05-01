@@ -5,17 +5,18 @@ import { debounce } from '@/utils/debounce';
 
 export const A = (props: ComponentProps<'a'>) => {
   const [isHover, setIsHover] = useState(false);
+  const isPreview = props.title === 'preview';
 
-  const handleMouseEnter = debounce(() => setIsHover(true));
-  const handleMouseLeave = debounce(() => setIsHover(false));
+  const handleMouseEnter = debounce(() => setIsHover(true), 100);
+  const handleMouseLeave = debounce(() => setIsHover(false), 100);
 
   return (
     <>
       {isHover && <OGPreviewCard url={props.href ?? ''} />}
       <a
         target='_blank'
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={isPreview ? handleMouseEnter : undefined}
+        onMouseLeave={isPreview ? handleMouseLeave : undefined}
         {...props}
       />
     </>

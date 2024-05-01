@@ -31,6 +31,7 @@ export const components = {
     );
   },
   a: A,
+  /** @description Caption 내부 link는 가능하면 preview 기능 적용 금지 */
   Captions(props) {
     return (
       <span
