@@ -30,7 +30,7 @@ export const ProjectMenu = ({
             `flex w-full cursor-pointer justify-between px-0 py-3 font-medium 
             hover:bg-white hover:text-blue-500
             dark:bg-transparent 
-            ${id === infoKey && 'text-blue-500'}`,
+            ${id === infoKey && 'text-blue-500 dark:text-blue-500'}`,
           )}
         >
           {info.title}
