@@ -36,7 +36,6 @@ export const MainSkeleton = () => {
         if (width < minWidth) width = minWidth;
         else if (width > window.innerWidth)
           width = Math.floor(window.innerWidth - Math.random() * 100);
-        console.log('🚀 ~ {Array.from ~ width:', width);
 
         return (
           <div
