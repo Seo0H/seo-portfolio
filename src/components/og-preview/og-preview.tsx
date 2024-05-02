@@ -43,7 +43,7 @@ export const OGPreviewCard = ({
   };
 
   return (
-    <div
+    <span
       ref={cardRef}
       className={cn(
         `absolute z-10 m-0 flex w-[20rem] flex-col overflow-hidden
@@ -54,6 +54,6 @@ export const OGPreviewCard = ({
       {...props}
     >
       {ogCardState[state](openGraph)}
-    </div>
+    </span>
   );
 };

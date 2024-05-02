@@ -16,13 +16,21 @@ export type ProjectInfoInfo = FrontMatter & { key: keyof ProjectNamespace };
 export const projectInfo = getEntryFromObject<
   keyof ProjectNamespace,
   (typeof ProjectPostsTypes)[keyof ProjectNamespace]
->(ProjectPosts).reduce<ProjectInfoMap>(
-  (acc, [key, post]) => {
-    acc[key] = { ...post.matter, key };
-    return acc;
-  },
+>(ProjectPosts)
+  .sort(idxAsc)
+  .reduce<ProjectInfoMap>(
+    (acc, [key, post]) => {
+      acc[key] = { ...post.matter, key };
+      return acc;
+    },
 
-  {} as ProjectInfoMap,
-);
+    {} as ProjectInfoMap,
+  );
 
 export const portfolioPath = ['info', ...projectKeys.map((key) => `project/${key}`)];
+
+/* utils */
+type ProjectEntry = [keyof ProjectNamespace, (typeof ProjectPostsTypes)[keyof ProjectNamespace]];
+function idxAsc([aPostKey]: ProjectEntry, [bPostKey]: ProjectEntry) {
+  return ProjectPosts[aPostKey].matter.idx - ProjectPosts[bPostKey].matter.idx;
+}

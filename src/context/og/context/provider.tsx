@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, useCallback } from 'react';
 
 import { isOgError } from '@/components/mdx/a/utils';
 
@@ -10,7 +10,7 @@ import { useOGReducer } from './reducer';
 export const OGProvider = ({ children }: { children: ReactNode }) => {
   const [openGraph, dispatchOpenGraph] = useOGReducer();
 
-  const handleOgData = async (url: string) => {
+  const handleOgData = useCallback(async (url: string) => {
     // 이미 존재할 경우 og 데이터 fetch를 진행하지 않음
     if (openGraph[url]?.state === 'success') return;
 
@@ -29,7 +29,7 @@ export const OGProvider = ({ children }: { children: ReactNode }) => {
         throw error;
       }
     }
-  };
+  }, []);
 
   return (
     <OGContext.Provider value={{ openGraph, setOpenGraphData: handleOgData }}>
