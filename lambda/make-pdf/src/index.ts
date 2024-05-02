@@ -87,6 +87,7 @@ const handler: Handler = async () => {
       CacheControl: 'max-age=31536000',
       Key: `seo-portfolio.pdf`, // TODO: 이전 버전 저장되도록 수정
       StorageClass: 'STANDARD',
+      ACL: 'public-read',
     };
 
     console.log(`✅ All pdf merge success`);
