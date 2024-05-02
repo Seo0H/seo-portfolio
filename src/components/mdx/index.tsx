@@ -42,10 +42,10 @@ export const components = {
   },
   img({ className, alt, ...props }) {
     return (
-      <div className='flex flex-col items-start justify-center gap-1'>
+      <div className='flex w-fit  flex-col justify-center gap-1'>
         <ToggleResult
           clickResult={<ImageModal src={props.src} />}
-          className='cursor-pointer rounded-xl border border-slate-200 shadow-slate-100 transition-all hover:shadow-lg dark:border-slate-700 dark:bg-gradient-to-b dark:from-slate-200 dark:to-slate-500 dark:hover:bg-gradient-to-b dark:hover:to-slate-50 dark:hover:mix-blend-normal'
+          className='cursor-pointer overflow-hidden rounded-xl border border-slate-200 shadow-slate-100 transition-all hover:shadow-lg dark:border-slate-700 dark:bg-gradient-to-b dark:from-slate-200 dark:to-slate-500 dark:hover:bg-gradient-to-b dark:hover:to-slate-50 dark:hover:mix-blend-normal'
         >
           <img
             className={cn(
@@ -58,6 +58,17 @@ export const components = {
         </ToggleResult>
         <div className='text-[12px] text-slate-500 print:max-w-[15cm]'>{alt}</div>
       </div>
+    );
+  },
+  td({ className, ...props }) {
+    return (
+      <td
+        className={cn(
+          className,
+          `${props.style?.textAlign === 'center' && 'align-middle [&>*]:mx-auto'}`,
+        )}
+        {...props}
+      />
     );
   },
   Block({ className, ...props }) {
