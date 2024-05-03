@@ -30,15 +30,15 @@ export { skillTags } from './contents';
 - **스토리북 적용 / 부분적 테스트 주도 개발** 적용 (Jest, React Testing Library)
 - **약 210명의 누적 사용자** / 기종별 반응형 대응 / SEO / GA
 
----
-
+<hr className='print:hidden' />
 <div className='print:break-before-page' />
 
 ## 기능 구현 / 문제 해결
 
 ### 1. 검색 자동 완성 기능 구현
 
-<div className='flex gap-2 md:block [&_*]:mt-0 md:[&>*]:mt-auto'>
+<div className='grid items-start grid-cols-[40%_auto] [&_img]:max-h-max print:[&_img]:max-h-[10cm] gap-3 [&_*]:mt-0'>
+
 ![자동완성 기능 이미지](/posts/sobisa/자동완성_이미지.png)
 
 - **구현 방식**
@@ -46,8 +46,6 @@ export { skillTags } from './contents';
   > **커스텀 훅을 이용한 로직 분리**
   >
   > - 자동완성 로직을 커스텀 훅으로 분리했습니다. ([`useAutoComp`](https://github.com/SobiSa-Expense-Hunter/SobiSa/blob/develop/src/hooks/useAutoCmp.ts))
-
-</div>
 
 - **최적화**
   > **API 요청 디바운스 적용**
@@ -59,9 +57,11 @@ export { skillTags } from './contents';
   >     링크](https://seo0h.notion.site/07f7199059964da0a0a145e4fdfdb2fb)
   >   </Captions>
 
+</div>
+
 ### 2. 이전 검색내역 보기
 
-<div className='flex gap-2 md:block [&_img]:min-w-[10rem] md:[&_img]:min-w-fit'>
+<div className='grid items-start grid-cols-[40%_auto] [&_img]:max-h-max print:[&_img]:max-h-[10cm] gap-3'>
   ![](/posts/sobisa/이전검색내역.png)
 
 > **`Indexed DB`를 이용한 이전 검색 내역 저장**

@@ -36,7 +36,7 @@ export { skillTags } from './contents';
   ![](/posts/blog/seo.png)
 
 <hr className='print:hidden' />
-<div className='print:h-40' />
+<div className='print:break-before-page' />
 
 ## 문제 해결 / 기능 구현
 
@@ -63,4 +63,4 @@ export { skillTags } from './contents';
   > **데이터베이스와 클라이언트의 데이터 정합성 검증**
   >
   > - **서버와 클라이언트의 정보를 담은 객체를 싱글톤 클래스를 이용해 관리**하였습니다. ([구현 코드 링크](https://github.com/Seo0H/seo0h.github.io/blob/027e730aa972a65287b172a4deb08aa4b8b73dea/src/constants/blogDataset/blogDataset.ts#L15)) <br />
-  >   글 정보가 서버와 클라이언트로 분리되어 있기에 두 개의 상태를 합쳐서 보여줘야 했었고 정보를 한 공간에서 관리하는 것이 관리가 용이할 것이라고 판단되었습니다. 따라서 클래스를 이용해 구현하였고, 중복된 정보가 메모리에 존재하는 것을 방지하기 위해 싱글톤으로 해당 객체를 구현하였습니다.
+  >   글 정보가 서버와 클라이언트로 분리되어 있기에 두 개의 상태를 합쳐서 보여줘야 했었고 정보를 한 공간에서 관리하는 것이 관리가 용이할 것이라고 판단되었기 때문입니다.
