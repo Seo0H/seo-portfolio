@@ -35,7 +35,7 @@ export const components = {
   Captions(props) {
     return (
       <span
-        className='text-sm font-light text-slate-400 [&_*]:text-slate-400 [&_ul]:m-0'
+        className='text-sm font-light text-slate-500 [&_*]:text-slate-500 [&_ul]:m-0 '
         {...props}
       />
     );
