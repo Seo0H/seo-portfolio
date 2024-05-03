@@ -6,6 +6,7 @@ idx: 2
 type: team
 ---
 
+import { Col2 } from '@contents/components/col-2';
 import { contents } from './contents';
 import { ProjectMainImage } from '@contents/components';
 export { skillTags } from './contents';
@@ -37,7 +38,7 @@ export { skillTags } from './contents';
 
 ### 1. 검색 자동 완성 기능 구현
 
-<div className='grid items-start grid-cols-[40%_auto] [&_img]:max-h-max print:[&_img]:max-h-[10cm] gap-3 [&_*]:mt-0'>
+<Col2 className='[&_*]:mt-0'>
 
 ![자동완성 기능 이미지](/posts/sobisa/자동완성_이미지.png)
 
@@ -57,11 +58,11 @@ export { skillTags } from './contents';
   >     링크](https://seo0h.notion.site/07f7199059964da0a0a145e4fdfdb2fb)
   >   </Captions>
 
-</div>
+</Col2>
 
 ### 2. 이전 검색내역 보기
 
-<div className='grid items-start grid-cols-[40%_auto] [&_img]:max-h-max print:[&_img]:max-h-[10cm] gap-3'>
+<Col2 >
   ![](/posts/sobisa/이전검색내역.png)
 
 > **`Indexed DB`를 이용한 이전 검색 내역 저장**
@@ -75,7 +76,7 @@ export { skillTags } from './contents';
 >     )
 >   </Captions>
 
-</div>
+</Col2>
 
 <div className='print:break-before-page' />
 
@@ -98,7 +99,7 @@ export { skillTags } from './contents';
 | :----------------------------: | :------------------------------------: |
 | ![](/posts/sobisa/온보딩1.png) | ![](/posts/sobisa/온보딩_오버레이.png) |
 
-</div>
+</Col2>
 
 > **localStorage를 이용한 초기 유입 유저 판별**
 >
