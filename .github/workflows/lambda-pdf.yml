@@ -25,3 +25,6 @@ jobs:
 
       - name: Response message from Lambda Function
         run: echo "$(<response.json )"
+
+      - name: Invalidate CloudFront Cache
+        run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_PDF_DISTRIBUTION_ID}} --paths "/*"
