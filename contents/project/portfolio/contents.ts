@@ -3,14 +3,15 @@ import { MainImageItemContents } from '@contents/components/main-image/types';
 import { SkillTag } from '@/types/front-matter';
 
 export const skillTags: SkillTag[] = [
-  'TypeScript',
-  'Vite',
-  'MDX',
-  'Tailwind',
-  'Github Page',
-  'SupaBase',
-  'S3',
-  'Lambda',
+  `TypeScript`,
+  `React`,
+  `Vite`,
+  `Tailwind`,
+  `MDX`,
+  `S3`,
+  'CloudFront',
+  'Route 53',
+  `Lambda`,
 ];
 
 export const contents: MainImageItemContents[] = [

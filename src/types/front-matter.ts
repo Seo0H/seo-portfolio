@@ -1,7 +1,9 @@
 export enum SkillTagMap {
   'TypeScript',
+  'React',
   'Next.js',
   'Vite',
+  'Route53',
   'React-Query',
   'Styled-Component',
   'Github Page',
