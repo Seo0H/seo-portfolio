@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { Outlet, createBrowserRouter, redirect } from 'react-router-dom';
 
+import { GA } from '@/components/ga';
 import { GlobalLayout } from '@/components/layout/global';
 import { MainSkeleton } from '@/components/loading';
 import { components } from '@/components/mdx';
@@ -17,17 +18,19 @@ const ProjectPage = lazy(() => transition(import('@/pages/project')));
 export const router = createBrowserRouter([
   {
     element: (
-      <ThemeProvider>
-        <MDXProvider components={components}>
-          <GlobalLayout>
-            <OGProvider>
-              <Suspense fallback={<MainSkeleton />}>
-                <Outlet />
-              </Suspense>
-            </OGProvider>
-          </GlobalLayout>
-        </MDXProvider>
-      </ThemeProvider>
+      <GA>
+        <ThemeProvider>
+          <MDXProvider components={components}>
+            <GlobalLayout>
+              <OGProvider>
+                <Suspense fallback={<MainSkeleton />}>
+                  <Outlet />
+                </Suspense>
+              </OGProvider>
+            </GlobalLayout>
+          </MDXProvider>
+        </ThemeProvider>
+      </GA>
     ),
     children: [
       { path: '/', loader: () => redirect('/info') },
