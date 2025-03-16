@@ -2,7 +2,7 @@ import { ComponentProps, useState } from 'react';
 
 import ReactGA from 'react-ga4';
 
-import { OGPreviewCard } from '@/components/og-preview';
+// import { OGPreviewCard } from '@/components/og-preview';
 import { debounce } from '@/utils/debounce';
 
 export const A = (
@@ -24,7 +24,7 @@ export const A = (
 
   return (
     <>
-      {isHover && <OGPreviewCard url={props.href ?? ''} />}
+      {/* {isHover && <OGPreviewCard url={props.href ?? ''} />} */}
       <a
         target='_blank'
         onMouseEnter={isPreview ? handleMouseEnter : undefined}
