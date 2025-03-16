@@ -36,10 +36,10 @@ export default function GeneratePdfPlugin(): Plugin {
           '--font-render-hinting=none',
         ],
         defaultViewport: chromium.defaultViewport,
-        executablePath: process.env.AWS_EXECUTION_ENV
-          ? await chromium.executablePath('/var/task/node_modules/@sparticuz/chromium/bin')
+        executablePath: process.env.CI
+          ? await chromium.executablePath()
           : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-        headless: !!chromium.headless,
+        headless: true,
       });
 
       console.log('🚀 browser 생성 완료');
@@ -60,8 +60,8 @@ export default function GeneratePdfPlugin(): Plugin {
           console.log(`📄 페이지 이동: ${url}`);
 
           try {
-            await page.goto(url, { waitUntil: 'networkidle0' });
-            await page.waitForSelector('h1', { visible: true });
+            await page.goto(url, { waitUntil: 'networkidle2' });
+            await page.waitForSelector('body', { visible: true, timeout: 60000 });
             await page.waitForFunction('document.fonts.ready');
 
             const pdfBuffer = await page.pdf({ format: 'a4', printBackground: true });

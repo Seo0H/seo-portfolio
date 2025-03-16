@@ -7,7 +7,7 @@ import { GA } from '@/components/ga';
 import { GlobalLayout } from '@/components/layout/global';
 import { MainSkeleton } from '@/components/loading';
 import { components } from '@/components/mdx';
-import { OGProvider } from '@/context/og';
+// import { OGProvider } from '@/context/og';
 import { ThemeProvider } from '@/context/theme';
 
 import { transition } from './utils';
@@ -22,11 +22,11 @@ export const router = createBrowserRouter([
         <ThemeProvider>
           <MDXProvider components={components}>
             <GlobalLayout>
-              <OGProvider>
-                <Suspense fallback={<MainSkeleton />}>
-                  <Outlet />
-                </Suspense>
-              </OGProvider>
+              {/* <OGProvider> */}
+              <Suspense fallback={<MainSkeleton />}>
+                <Outlet />
+              </Suspense>
+              {/* </OGProvider> */}
             </GlobalLayout>
           </MDXProvider>
         </ThemeProvider>

@@ -1,8 +1,4 @@
 name: Build And Deploy to S3
-on:
-  push:
-    branches:
-      - main
 
 env:
   VITE_INTERNAL: true
