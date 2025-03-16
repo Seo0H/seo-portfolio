@@ -8,6 +8,7 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 import { defineConfig } from 'vite';
 
 import rehypeWrapSibling from './libs/rehype-wrap-sibling';
+import GeneratePdfPlugin from './plugins/make-pdf';
 
 const prettyCodeOptions: Options = {
   theme: 'nord',
@@ -37,6 +38,7 @@ export default defineConfig({
       }),
     },
     react(),
+    GeneratePdfPlugin(),
   ],
   resolve: {
     alias: [

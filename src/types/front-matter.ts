@@ -16,6 +16,10 @@ export enum SkillTagMap {
   'Route 53',
   'E2C',
   'Lambda',
+  'Zod',
+  'Zustand',
+  'Jest',
+  'Husky',
 }
 
 export type FrontMatter = {
