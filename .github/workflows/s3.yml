@@ -1,36 +1,36 @@
-name: Build And Deploy to S3
+# name: Build And Deploy to S3
 
-env:
-  VITE_INTERNAL: true
+# env:
+#   VITE_INTERNAL: true
 
-jobs:
-  deploy_s3:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+# jobs:
+#   deploy_s3:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
 
-      - name: Setup node
-        uses: actions/setup-node@v2
+#       - name: Setup node
+#         uses: actions/setup-node@v2
 
-      - name: Add env file
-        run: echo "${{ secrets.ENV_LOCAL }}" >> .env.production
+#       - name: Add env file
+#         run: echo "${{ secrets.ENV_LOCAL }}" >> .env.production
 
-      - name: Install dependencies
-        run: npm ci
+#       - name: Install dependencies
+#         run: npm ci
 
-      - name: Build static file
-        run: npm run build
+#       - name: Build static file
+#         run: npm run build
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@master
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY }}
-          aws-region: ap-northeast-2
+#       - name: Configure AWS Credentials
+#         uses: aws-actions/configure-aws-credentials@master
+#         with:
+#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY }}
+#           aws-region: ap-northeast-2
 
-      - name: Deploy static site to S3 bucket
-        run: aws s3 sync ./dist s3://portfolio.seo0h.me --delete
+#       - name: Deploy static site to S3 bucket
+#         run: aws s3 sync ./dist s3://portfolio.seo0h.me --delete
 
-      - name: Invalidate CloudFront Cache
-        run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_DISTRIBUTION_ID}} --paths "/*"
+#       - name: Invalidate CloudFront Cache
+#         run: aws cloudfront create-invalidation --distribution-id ${{secrets.CLOUDFRONT_DISTRIBUTION_ID}} --paths "/*"
