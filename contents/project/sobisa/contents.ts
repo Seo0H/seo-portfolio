@@ -2,7 +2,12 @@ import type { MainImageItemContents } from '@contents/components/main-image/type
 
 import { SkillTag } from '@/types/front-matter';
 
-export const skillTags: SkillTag[] = ['TypeScript', 'Next.js', 'React-Query', 'Styled-Component'];
+export const skillTags: SkillTag[] = [
+  'TypeScript',
+  'Next.js (v13)',
+  'React-Query',
+  'Styled-Component',
+];
 
 export const contents: MainImageItemContents[] = [
   {

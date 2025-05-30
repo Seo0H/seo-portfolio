@@ -12,35 +12,30 @@ import { contents } from './contents';
 
 <ProjectMainImage contents={contents} />
 
-## Project Info
+## 기본 정보
 
-- [배포 링크](https://seo-portfolio-sepia.vercel.app/ 'preview') | [Github Repo](https://github.com/Seo0H/seo-portfolio 'preview')
+- [**배포 링크**](https://seo-portfolio-sepia.vercel.app/ 'preview') | [**Github Repo**](https://github.com/Seo0H/seo-portfolio 'preview')
+- **기간** : 2024.03 - 2024.04
+- **프로젝트 요약** : `mdx` 형식으로 작성된 포트폴리오 웹사이트
 
-## 요약
-
-- 개인 프로젝트
-- 24년 3월 ~ 4월 간 진행한 포트폴리오 사이트 제작 프로젝트
-- `mdx` 를 이용한 포트폴리오를 컨텐츠 작성
-- 배포된 웹 포트폴리오를 `lambda` 와 `S3` 를 이용해 PDF로 변환하여 다운로드 할 수 있도록 구현
+<div className='print:h-3' />
 
 ## 개인 성과
 
-- **Web To PDF** : 포트폴리오 웹사이트를 Lambda 를 이용해 PDF 로 변환하여 유저가 다운로드 할 수 있도록 구현
-- **Open Graph Privew** : `a` tag의 연결된 링크의 Open Graph 정보를 받아와 미리보기 제공
-- **정적 배포** : `AWS S3`, `Cloud Front`를 이용한 정적 배포
+- **Web To PDF** : 포트폴리오 웹사이트를 PDF 로 변환하여 다운로드 할 수 있는 기능
+- **Open Graph Preview\*** : `a` tag의 연결된 링크의 Open Graph 정보를 받아와 미리보기 제공
+- **정적 배포\*** : `AWS S3`, `Cloud Front`를 이용한 정적 배포
 - **CI/CD** : github action 을 이용한 빌드와 배포 자동화
 - `MDX` 를 이용한 포트폴리오 컨텐츠 제작
 - 모바일 대응 / 다크모드 / Open Graph
 
-<div className='print:h-5' />
+<Captions>\* AWS 비용 문제로 인해 내려간 상태 </Captions>
 
----
+<div className='print:break-before-page' />
 
 ## 문제 해결 / 기능 구현
 
 ### 기능 1. 웹사이트 PDF 변환 및 다운로드 기능
-
-> 2025년 3월 이후 AWS 비용 문제로, 빌드 시 PDF 를 변환하여 저장하도록 구현해 둔 상태입니다.
 
 - **요구사항 정의**
 
@@ -52,7 +47,7 @@ import { contents } from './contents';
 
 - **구현 방식**
 
-  > **Github Action 에서 IAM 인증을 통한 Lambd 함수 URL 호출**([해당 코드](https://github.com/Seo0H/seo-portfolio/blob/main/.github/workflows/lambda-pdf.yml))
+  > **Github Action 에서 IAM 인증을 통한 Lambda 함수 URL 호출**([해당 코드](https://github.com/Seo0H/seo-portfolio/blob/main/.github/workflows/lambda-pdf.yml))
   >
   > - Github Action 에서 사이트가 빌드, 배포 된 후 Lambda 함수 URL 을 호출하도록 workflow script를 구성하였습니다.
   > - Github action 환경에서 aws client를 이용해 Lambda 함수를 호출하기 위해 IAM Role 를 이용한 인증을 받아야 했습니다. 이를 위해 AWS 에서 제공하는 OIDC를 이용한 인증 절차를 적용하였습니다.
@@ -68,7 +63,7 @@ import { contents } from './contents';
 
 <div className='hidden print:block print:break-before-page' />
 
-### 기능 2. Open Graph 미리보기 제공 (E2C 비용 문제로 내려간 상태)
+### 기능 2. Open Graph 미리보기 제공
 
 ![OG Preview 가 작동하는 모습](/posts/portfolio/4.png)
 
@@ -78,14 +73,14 @@ import { contents } from './contents';
 
 - **구현 방식**
 
-  > **MDX A tag 커스터마이징 & `<OGPreviewCard />` 컴포넌트 구현**
+  > **`<OGPreviewCard />` 컴포넌트 구현**
   >
-  > - A Tag 에서 마우스 호버에 대한 정보를 상태로 가지도록 커스텀 하였습니다. 호버가 되면 `<OGPreviewCard />` 컴포넌트가 마운트되는 형식으로 구현하였고, event 감지의 예민함을 조절하기 위해 `onMouseEnter`, `onMouseLeave` 핸들러 함수에 디바운스를 적용하였습니다.
+  > - A Tag 에 호버가 되면 `<OGPreviewCard />` 컴포넌트가 보여지는 형식으로 구현하였고, event 감지의 예민함을 조절하기 위해 핸들러 함수에 디바운스를 적용하였습니다.
 
   > **`<OGPreviewCard />` 위치 보정**
   >
   > - `ref`를 이용해 미리보기 카드가 화면의 좌, 우를 넘어서 보여지면 위치를 이동시켜 오버플로우되지 않도록 보정하였습니다.
 
-  > **Open Graph Provider 를 이용한 API 다중 호출 방지**
+  > **데이터 캐싱을 통한 API 다중 호출 방지**
   >
-  > - A Tag hover 시 매번 Open Graph 정보 API 호출을 하는 것은 리소스 낭비입니다. 전역에 Open Graph 에 대한 정보를 캐시해 상태로 가지고 있는 Provider를 구현해 필요한 Open Graph 정보가 이미 전역 상태에 있을 경우 해당 정보를 사용하도록 하였습니다.
+  > - 전역에 Open Graph 에 대한 정보를 캐시해두고, 이미 캐시된 정보는 API를 호출하지 않도록 구현하였습니다. 이를 위해 `OpenGraphProvider` 를 만들어 `useContext` 를 이용해 전역 상태로 관리하였습니다.

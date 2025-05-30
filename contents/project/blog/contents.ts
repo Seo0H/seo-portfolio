@@ -4,7 +4,7 @@ import { SkillTag } from '@/types/front-matter';
 
 export const skillTags: SkillTag[] = [
   'TypeScript',
-  'Next.js',
+  'Next.js (v13)',
   'Styled-Component',
   'MDX',
   'Github Page',

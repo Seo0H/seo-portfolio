@@ -12,35 +12,34 @@ export { skillTags } from './contents';
 
 <ProjectMainImage contents={contents} />
 
-## Project Info
+## 기본 정보
 
-- [배포 링크](https://seo0h.github.io/ 'preview') | [Github Repo](https://github.com/Seo0H/seo0h.github.io 'preview')
-
-<div className='print:h-3' />
-
-### 요약
-
-- 23년 8월 ~ 9월 간 진행한 개인 블로그 제작 프로젝트
-- `mdx` 형식으로 글을 작성하는 블로그
+- [**배포 링크**](https://seo0h.github.io/ 'preview') | [**Github Repo**](https://github.com/Seo0H/seo0h.github.io 'preview')
+- **기간**
+  - 1차 개발 : 2023.08 - 2023.09
+  - Next.js 14 마이그레이션: 2025.05 ~
+- **프로젝트 요약** : `mdx` 형식으로 글을 작성할 수 있는 개인 블로그 사이트
 
 <div className='print:h-3' />
 
 ### 개인 성과
 
-- **조회수 기능** : 쿠키를 이용한 유저 검증, 서버 제작, Supabase 데이터베이스 구현, AWS E2C 와 Docker를 이용한 서버 배포
-- **개인 도메인 적용** : API 통신을 위한 개인 도메인 적용. AWS Route 53 을 이용.
-- **배포 CICD** : Github Pages를 이용한 Next.js 정적 배포 CI/CD 구현
-- **MDX Parsing** : Contentlayer 을 이용한 mdx 파싱
-- 글 태그 별 **필터링** 구현
+- **조회수 기능\*** : 쿠키를 이용한 유저 판별을 통해 글 조회수 기능 구현
+- **글 작성 및 관리** : `mdx` 형식으로 글 작성 및 관리. `remark`, `rehype` 플러그인을 이용해 글을 렌더링
+- **개인 도메인 적용\*** : API 통신을 위한 개인 도메인 적용. AWS Route 53 을 이용해 `SSL` 적용
+- **정적 사이트 생성** : Next.js의 `getStaticProps`를 이용해 정적 사이트 생성
+- **CI/CD** : Github action 을 이용한 Next.js 정적 배포 CI/CD 구현
 - 기종별 반응형 대응 / SEO / GA
   ![](/posts/blog/seo.png)
+
+<Captions>\* AWS 비용 문제로 인해 내려간 상태</Captions>
 
 <hr className='print:hidden' />
 <div className='print:break-before-page' />
 
 ## 문제 해결 / 기능 구현
 
-### 조회수 기능 구현 (E2C 비용 문제로 내려간 상태)
+### 조회수 기능 구현
 
 - **요구사항 정의**
 
@@ -59,8 +58,3 @@ export { skillTags } from './contents';
   > - ⚠️ 해당 기능을 구현하며 **서버에서 전달된 쿠키를 클라이언트에서 저장하지 못하는 문제**가 있었습니다. <br />
   >   - **문제 원인**: ① 서버와 클라이언트 서버의 도메인이 달랐습니다. ② 클라이언트는 SSL 적용이 되어있는 반면, 서버는 SSL 적용이 되어있지 않았습니다.
   >   - **해결 방법** : ① 개발 서버와 클라이언트 서버가 같은 도메인을 가지도록 서브 도메인을 부여하였고 ② 서버 도메인에 `Route 53`을 이용해 `SSL` 적용을 하였으며 ➂ 서버의 응답 header에 `same-site=strict`, `secure=true`, `http-only=true` 속성을 적용하였습니다.
-
-  > **데이터베이스와 클라이언트의 데이터 정합성 검증**
-  >
-  > - **서버와 클라이언트의 정보를 담은 객체를 싱글톤 클래스를 이용해 관리**하였습니다. ([구현 코드 링크](https://github.com/Seo0H/seo0h.github.io/blob/027e730aa972a65287b172a4deb08aa4b8b73dea/src/constants/blogDataset/blogDataset.ts#L15)) <br />
-  >   글 정보가 서버와 클라이언트로 분리되어 있기에 두 개의 상태를 합쳐서 보여줘야 했었고 정보를 한 공간에서 관리하는 것이 관리가 용이할 것이라고 판단되었기 때문입니다.
